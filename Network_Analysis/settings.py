@@ -78,8 +78,12 @@ WSGI_APPLICATION = "Network_Analysis.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Network_AnalysisDB',
+        'USER': 'root',
+        'PASSWORD': 'MySQL123',
+        'PORT': '3306',
+        'HOST': 'localhost',
     }
 }
 
