@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "NetUser.apps.NetUserConfig",
 ]
 
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
