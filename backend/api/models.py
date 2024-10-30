@@ -14,7 +14,7 @@ def generarte_unique_code():
 
 # Create your models here.
 class Network(models.Model):
-    code = models.CharField(max_length=8, default = "", unique = True)
+    code = models.CharField(max_length=8, default = generarte_unique_code, unique = True)
     admin = models.CharField(max_length=50, unique =True)
     created_at = models.DateTimeField(auto_now_add=True)
     

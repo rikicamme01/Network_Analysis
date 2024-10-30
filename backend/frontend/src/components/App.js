@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {createRoot} from "react-dom/client";
-import Message from './Message';
+import CreateNetPage from './CreateNetPage';
 
 export default function App(props) {
-    return <Message name='Mike'/>;
+    return <CreateNetPage />;
 }
-//return <div><Message/></div>
 
 const appDiv = document.getElementById("app");
 
 const root = createRoot(appDiv); // Usa createRoot per React 18+
-root.render(<App/>);
+root.render(<App />);
