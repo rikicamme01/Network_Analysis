@@ -3,6 +3,7 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.js",
+  mode: "development",
   output: {  
     path: path.resolve(__dirname, "./static/frontend"),
     filename: "[name].js",
@@ -16,6 +17,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.css$/i, // Regola per i file CSS
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   optimization: {
@@ -24,7 +29,6 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        // This has effect on the react lib size
         NODE_ENV: JSON.stringify("production"),
       },
     }),

@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {createRoot} from "react-dom/client";
-import CreateNetPage from './CreateNetPage';
+import ExamplePage from './ExamplePage';
 
 export default function App(props) {
-    return <CreateNetPage />;
+    return <ExamplePage />;
 }
 
 const appDiv = document.getElementById("app");
