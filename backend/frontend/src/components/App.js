@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {createRoot} from "react-dom/client";
-import ExamplePage from './ExamplePage';
+import ExamplePage from '../pages/ExamplePage';
 
 export default function App(props) {
     return <ExamplePage />;
