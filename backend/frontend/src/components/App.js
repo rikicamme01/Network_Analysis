@@ -12,7 +12,7 @@ export default function App(props) {
     return (
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true, }}>
             <Routes>
-                <Route path="/" element={<Prova />} />
+                <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/newAss" element={<NewAss />} />
                 <Route path="/adminSurvey" element={<AdminSurvey />} />
