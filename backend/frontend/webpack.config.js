@@ -9,10 +9,6 @@ module.exports = {
     filename: "[name].js",
     publicPath: "/", // Aggiunto per garantire che tutte le richieste puntino alla root
   },
-  devServer: {
-    historyApiFallback: true, // Aggiungi questa linea per gestire il routing lato client
-    static: path.resolve(__dirname, "./static/frontend"), // Path per i file statici
-  },
   module: {
     rules: [
       {

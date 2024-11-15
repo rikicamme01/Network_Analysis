@@ -7,6 +7,7 @@ import AdminSurvey from "../pages/AdminSurvey";
 import Questionari from "../pages/Questionari";
 import ReportLoading from "../pages/ReportLoading";
 import ReportFinal from "../pages/ReportFinal";
+import "../../static/css/style.css"
 
 export default function App(props) {
     return (
