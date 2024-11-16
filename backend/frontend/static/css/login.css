@@ -44,6 +44,9 @@
 }
 
 .login .con-il-supporto-di {
+  display: flex;
+  justify-content: center;
+  font-style: --main-font;
   position: absolute;
   top: 500px;
   left: 80px;
@@ -53,7 +56,11 @@
 .login .button {
   position: absolute;
   top: 550px;
+}
 
+.login .logo-cariplo {
+  position: absolute;
+  top: 530px;
 }
 
 .login .text-wrapper-6 {

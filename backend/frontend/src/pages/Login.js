@@ -77,12 +77,13 @@ export default function Login() {
                     <Link to='/newAss'>
                         <CustomButton
                             text='Login'
-                            width = '300px'
+                            width='300px'
                             onClick={handleClick} />
                     </Link>
                 </div>
-                <div className="con-il-supporto-di">Con il supporto di</div>
-
+                <div className="con-il-supporto-di">Con il supporto di
+                    <img className="logo-cariplo" src='../../static/img/Login/Logo-Cariplo.png' />
+                </div>
 
             </div>
         </div>
