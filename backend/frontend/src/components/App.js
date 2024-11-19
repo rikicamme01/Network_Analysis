@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Prova from '../components/Prova';
 import ExamplePage from '../pages/ExamplePage';
 import Login from "../pages/Login";
-import NewAss from "../pages/NewAss";
-import AdminSurvey from "../pages/AdminSurvey";
-import Questionari from "../pages/Questionari";
-import ReportLoading from "../pages/ReportLoading";
-import ReportFinal from "../pages/ReportFinal";
+import NewAss from "../pages/admin/NewAss";
+import AdminSurvey from "../pages/admin/AdminSurvey";
+import Questionari from "../pages/admin/Questionari";
+import ReportLoading from "../pages/admin/ReportLoading";
+import ReportFinal from "../pages/admin/ReportFinal";
+import Analisi from "../pages/analyzer/Analisi";
 import "../../static/css/style.css"
 
 export default function App(props) {
@@ -21,6 +22,8 @@ export default function App(props) {
                 <Route path="/questionari" element={<Questionari />} />
                 <Route path="/reportLoading" element={<ReportLoading />} />
                 <Route path="/reportFinal" element={<ReportFinal />} />
+
+                <Route path="/analisi" element={<Analisi />} />
             </Routes>
         </BrowserRouter>
     );

@@ -48,9 +48,15 @@ export default function Login() {
 
         //(thread 2) Abilita collegamento a /newAss
         if (isAuthenticated) {
-            navigate("/newAss"); // Specifica il percorso di destinazione
+            if (username === 'admin') {
+                navigate("/newAss");
+            } else if (username === 'analyzer') {
+                navigate("/analisi");
+            } else {
+                console.log("Utente non autorizzato"); 
+            }
         } else {
-            console.log("Utente non autorizzato")
+            console.log("Utente non autenticato");
         }
 
     };
