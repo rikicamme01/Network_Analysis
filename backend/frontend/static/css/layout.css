@@ -1,58 +1,64 @@
 .layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
     width: 100vw;
     height: 100vh;
 }
 
-.column {
+.spalla-sx {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.layout .spalla-sx {
+    min-width: 180px;
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
 
     background-color: #22509c;
 
 }
 
 .img-Dialogica-logo {
-    max-width: 50%;
     height: auto;
+    width: 10vw;
     -webkit-user-drag: none;
-    transform: scale(1);
 }
 
-.layout .main {
+.main {
+    display: grid;
+    grid-template-rows: min-content auto;
 
-    background-color: #cd1818;
+    background-color: brown;
 
 }
-
 
 .title {
-    font-size: 250%;
-    font-family: "Titillium Web", Helvetica;
+    font-size: 36;
+    font-family: 'Roboto', sans-serif;
+    align-self: center;
 
 }
 
 .children {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 8vh;
+    background-color: blueviolet;
+}
 
-    background-color: #cd1879;
+.spalla-dx {
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 
-.layout .spalla-dx {
-
-    background-color: #42cd18;
-
-}
-
-.spalla-dx .img-NCI {
-    max-width: 50%;
+.img-NCI {
+    width: 175px;
     height: auto;
     -webkit-user-drag: none;
+    margin-top: auto; ;
 }

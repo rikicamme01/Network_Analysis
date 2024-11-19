@@ -3,26 +3,29 @@ import PropTypes from 'prop-types';
 import "../../static/css/layout.css"
 
 
-export default function Layout(props, { children }) {
+export default function Layout(props, { children1, children2 }) {
 
     return (
         <div className="layout">
-            <div className="column spalla-sx">
-                <img className="img-Dialogica-logo" src="../../static/img/layout/Dialogica_Logo_Lab.png" />
+            <div className="spalla-sx">
+                <img className="img-Dialogica-logo" alt="Logo Dialogica Lab" src="../../static/img/layout/Dialogica_Logo_Lab.png" />
+                <div className="children">{children1}<h1>Children1</h1></div>
             </div>
-            <div className="column main">
-                <div className="main-title">
+            <div className="main">
+                <div className="div-title">
                     <h1 className="title"> {props.title}</h1>
                 </div>
 
-                <div className="children"></div>
-            </div>
-            <div className="column spalla-dx">
-                <div>
-
+                <div className="children">
+                    {children2}
+                    <h1 >Children2</h1>
                 </div>
-
-                <img className="img-NCI" src="../../static/img/layout/Logo_NCI.png" />
+            </div>
+            <div className="spalla-dx">
+                <div>
+                    <h2 >Button</h2>
+                </div>
+                <img className="img-NCI" alt="Logo NCI" src="../../static/img/layout/Logo_NCI.png" />
             </div>
 
         </div>
