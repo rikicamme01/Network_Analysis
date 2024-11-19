@@ -1,0 +1,58 @@
+.layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.layout .spalla-sx {
+
+    background-color: #22509c;
+
+}
+
+.img-Dialogica-logo {
+    max-width: 50%;
+    height: auto;
+    -webkit-user-drag: none;
+    transform: scale(1);
+}
+
+.layout .main {
+
+    background-color: #cd1818;
+
+}
+
+
+.title {
+    font-size: 250%;
+    font-family: "Titillium Web", Helvetica;
+
+}
+
+.children {
+
+    background-color: #cd1879;
+
+}
+
+.layout .spalla-dx {
+
+    background-color: #42cd18;
+
+}
+
+.spalla-dx .img-NCI {
+    max-width: 50%;
+    height: auto;
+    -webkit-user-drag: none;
+}

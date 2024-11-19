@@ -1,8 +1,9 @@
 import React from "react";
+import Layout from "../../components/Layout";
 
-export default function Analisi(){
-    return(
-        <h1>Analisi page</h1>
-
+export default function Analisi() {
+    return (
+        <Layout title="[Name Ass]">
+        </Layout>
     );
 }
