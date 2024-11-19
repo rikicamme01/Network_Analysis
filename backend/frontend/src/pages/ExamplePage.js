@@ -12,6 +12,7 @@ export default function QuestionForm() {
     const [answers, setAnswers] = useState([]);
 
     const handleButtonClick = () => {
+        console.log('bella')
         const collectedAnswers = questionRefs.map((ref, index) => {
             return ref.current.value;
         });

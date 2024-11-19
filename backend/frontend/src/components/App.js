@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Prova from '../components/Prova';
+import ExamplePage from '../pages/ExamplePage';
 import Login from "../pages/Login";
 import NewAss from "../pages/NewAss";
 import AdminSurvey from "../pages/AdminSurvey";

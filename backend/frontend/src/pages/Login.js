@@ -1,17 +1,58 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { InputAdornment } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import CustomButton from "../components/CustomButton";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import "../../static/css/login.css";
 
 export default function Login() {
 
-    const handleClick = () => {
-        pass;
+    const usernameRef = useRef();
+    const passwordRef = useRef();
+    //const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const [usernameError, setUsernameError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+
+    /*const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev); // Inverte lo stato di visibilità
+    };*/
+
+    const handleLogin = () => {
+
+        setPasswordError(false);
+        setUsernameError(false);
+
+        const username = usernameRef.current.value.trim();
+        const password = passwordRef.current.value.trim();
+
+        if (!username) {
+            setUsernameError(true);
+            return;
+        }
+        if (password.length < 6) {
+            setPasswordError(true);
+            return;
+        }
+
+        // (thread 1) Salvataggio e invio dei dati a un'API (qui si potrebbe aggiungere la logica di autenticazione)
+        const loginData = { username, password };
+        const isAuthenticated = true;
+        console.log("Dati di login:", loginData);
+
+        //(thread 2) Abilita collegamento a /newAss
+        if (isAuthenticated) {
+            navigate("/newAss"); // Specifica il percorso di destinazione
+        } else {
+            console.log("Utente non autorizzato")
+        }
+
     };
 
 
@@ -31,9 +72,12 @@ export default function Login() {
                 {/* Campo Username con icona */}
                 <TextField
                     className="username-text-field"
+                    inputRef={usernameRef}
                     label="Email-ID"
                     variant="outlined" // Cambia con "filled" o "standard" se preferisci
                     fullWidth
+                    error={usernameError}
+                    helperText={usernameError ? 'Questo campo è obligatorio' : ''}
                     sx={{
                         width: '300px', // Larghezza sufficiente per visualizzare l'icona e il testo
                         fontSize: '20px', // Corretto il font-size
@@ -43,7 +87,7 @@ export default function Login() {
                             startAdornment: (
                                 <InputAdornment position="start">
                                     <AccountCircleIcon
-                                        sx={{ fontSize: 40 }} // Dimensione dell'icona
+                                        sx={{ fontSize: 40, color: 'black' }} // Dimensione dell'icona
                                     />
                                 </InputAdornment>
                             ),
@@ -55,8 +99,12 @@ export default function Login() {
                 <TextField
                     className="password-text-field"
                     label="Password"
+                    inputRef={passwordRef}
+                    //type='password' // Cambia il tipo dinamicamente
                     variant="outlined" // Cambia con "filled" o "standard" se preferisci
                     fullWidth
+                    error={passwordError}
+                    helperText={passwordError ? 'La password deve avere almeno 6 caratteri' : ''}
                     sx={{
                         width: '300px', // Larghezza sufficiente per visualizzare l'icona e il testo
                         fontSize: '20px', // Corretto il font-size
@@ -66,24 +114,27 @@ export default function Login() {
                             startAdornment: (
                                 <InputAdornment position="start">
                                     <VpnKeyIcon
-                                        sx={{ fontSize: 40 }} // Dimensione dell'icona
+                                        sx={{ fontSize: 40, color: 'black' }} // Dimensione dell'icona
                                     />
                                 </InputAdornment>
                             ),
+
                         }
                     }}
                 />
                 <div className="button">
-                    <Link to='/newAss'>
-                        <CustomButton
-                            text='Login'
-                            width='300px'
-                            onClick={handleClick} />
-                    </Link>
+                    <CustomButton
+                        text='Login'
+                        width='300px'
+                        onClick={handleLogin} />
                 </div>
-                <div className="con-il-supporto-di">Con il supporto di
-                    <img className="logo-cariplo" src='../../static/img/Login/Logo-Cariplo.png' />
+                <div className="div-cariplo">
+                    <span className="con-il-supporto-di">Con il supporto di </span>
+                    <img className="logo-cariplo"
+                        src="../../static/img/Login/Logo_Cariplo.png"
+                        alt='Logo Cariplo' />
                 </div>
+
 
             </div>
         </div>

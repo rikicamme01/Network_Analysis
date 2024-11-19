@@ -5,6 +5,7 @@ import "../../static/css/style.css"
 export default function CustomButton(props) {
     return (
         <Button
+            {...props}
             variant="contained" // Tipo di bottone, "contained" per uno stile pieno
             color="primary" // Colore predefinito, può essere "primary", "secondary", "error", etc.
             sx={{
