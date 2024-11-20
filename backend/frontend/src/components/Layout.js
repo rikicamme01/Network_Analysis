@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Button } from "@mui/material";
 import "../../static/css/layout.css"
 
 
@@ -9,7 +10,7 @@ export default function Layout(props, { children1, children2 }) {
         <div className="layout">
             <div className="spalla-sx">
                 <img className="img-Dialogica-logo" alt="Logo Dialogica Lab" src="../../static/img/layout/Dialogica_Logo_Lab.png" />
-                <div className="children">{children1}<h1>Children1</h1></div>
+                <div className="children">{children1}</div>
             </div>
             <div className="main">
                 <div className="div-title">
@@ -18,14 +19,15 @@ export default function Layout(props, { children1, children2 }) {
 
                 <div className="children">
                     {children2}
-                    <h1 >Children2</h1>
                 </div>
             </div>
             <div className="spalla-dx">
-                <div>
-                    <h2 >Button</h2>
+                <div className="logout">
+                    <Button>Button</Button>
                 </div>
-                <img className="img-NCI" alt="Logo NCI" src="../../static/img/layout/Logo_NCI.png" />
+                <div className="div-NCI">
+                    <img className="img-NCI" alt="Logo NCI" src="../../static/img/layout/Logo_NCI.png" />
+                </div>
             </div>
 
         </div>

@@ -31,11 +31,19 @@
 
 }
 
+.div-title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: aqua;
+
+}
+
 .title {
     font-size: 36;
     font-family: 'Roboto', sans-serif;
-    align-self: center;
-
+    position: relative;
+    top: 20px;
 }
 
 .children {
@@ -50,15 +58,23 @@
     background-color: green;
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
 
+}
+
+.logout {
+    background-color: #A9C4EB;
+
+}
+
+.div-NCI {
+    padding-bottom: 0.5vh;
+    padding-right: 0.5vw;
+    margin-top: auto;
 }
 
 .img-NCI {
     width: 175px;
     height: auto;
     -webkit-user-drag: none;
-    margin-top: auto; ;
+    user-select: none;
 }
