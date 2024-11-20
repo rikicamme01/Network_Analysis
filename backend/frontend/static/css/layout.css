@@ -3,6 +3,7 @@
     grid-template-columns: min-content auto min-content;
     width: 100vw;
     height: 100vh;
+    background-color: #F6F6F6;
 }
 
 .spalla-sx {
@@ -25,9 +26,8 @@
 
 .main {
     display: grid;
-    grid-template-rows: min-content auto;
-
-    background-color: brown;
+    grid-template-rows: 130px auto;
+    height: 100%;
 
 }
 
@@ -35,34 +35,34 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background-color: aqua;
 
 }
 
 .title {
     font-size: 36;
     font-family: 'Roboto', sans-serif;
-    position: relative;
-    top: 20px;
 }
 
 .children {
     display: flex;
     justify-content: center;
+}
+
+.child1 {
     position: relative;
-    top: 8vh;
-    background-color: blueviolet;
+    top: 55px;
 }
 
 .spalla-dx {
-    background-color: green;
     display: flex;
     flex-direction: column;
-
 }
 
 .logout {
-    background-color: #A9C4EB;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
