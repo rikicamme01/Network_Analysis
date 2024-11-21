@@ -17,7 +17,7 @@ export default function Layout({ spallasx, main, title }) {
                     <h1 className="title"> {title}</h1>
                 </div>
 
-                <div className="children">
+                <div className="children child2">
                     {main}
                 </div>
             </div>

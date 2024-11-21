@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import '../../static/css/tabRisposte.css'
+import { green } from '@mui/material/colors';
 
 function createData(role, answer, respondents, perc,) {
     return { role, answer, respondents, perc };
@@ -19,7 +20,7 @@ const rows = [
     createData('TOT', 9, 60, 15),
 ];
 
-export default function TabellaRisposte({time}) {
+export default function TabellaRisposte({ time }) {
     return (
         <div className='frame'>
             <p className='title-tab'>Status somministrazione: {time} giorni</p>
@@ -42,7 +43,15 @@ export default function TabellaRisposte({time}) {
                         backgroundColor: '#CCCCCC',
                         '& td': {
                             borderBottom: 'none', // Linee divisorie tra le righe
+                            fontFamily: 'Roboto, sans-serif',
+                            fontSize: "17px",
                         },
+                        '& th': {
+                            borderBottom: 'none', // Linee divisorie tra le righe
+                            fontFamily: 'Roboto, sans-serif',
+                            fontSize: "17px",
+                        },
+
 
                     }} >
                     <TableHead>
@@ -50,6 +59,8 @@ export default function TabellaRisposte({time}) {
                             backgroundColor: '#797979',
                             '& th': {
                                 fontWeight: 'bold', // Intestazione in grassetto
+                                fontFamily: 'Roboto, sans-serif',
+                                fontSize: '17px',
                                 borderBottom: '2px solid #000', // Linea divisoria dell'intestazione
                             },
                         }}>

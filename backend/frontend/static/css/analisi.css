@@ -1,3 +1,42 @@
-.div-table{
-    
+.frame {
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    background-color: aqua;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.row1-dx {
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+}
+
+.div-button-analisi {
+    margin-top: 20px;
+}
+
+.div-res-gif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    margin-top: auto;
+
+}
+
+.row2 {
+    background-color: cadetblue
+}
+
+.row3 {
+    background-color: blue
+}
+
+.row4 {
+    background-color: chartreuse
 }

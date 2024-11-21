@@ -53,7 +53,7 @@ export default function Login() {
             } else if (username === 'analyzer') {
                 navigate("/analisi");
             } else {
-                console.log("Utente non autorizzato"); 
+                console.log("Utente non autorizzato");
             }
         } else {
             console.log("Utente non autenticato");
@@ -138,6 +138,11 @@ export default function Login() {
                     <span className="con-il-supporto-di">Con il supporto di </span>
                     <img className="logo-cariplo"
                         src="../../static/img/Login/Logo_Cariplo.png"
+                        alt='Logo Cariplo' />
+                </div>
+                <div className="div-lab">
+                    <img className="logo-lab"
+                        src="../../static/img/Login/LAB_logo.png"
                         alt='Logo Cariplo' />
                 </div>
 
