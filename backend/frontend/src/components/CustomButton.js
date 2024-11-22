@@ -9,7 +9,7 @@ export default function CustomButton(props) {
             variant="contained" // Tipo di bottone, "contained" per uno stile pieno
             color="primary" // Colore predefinito, può essere "primary", "secondary", "error", etc.
             sx={{
-                fontSize: '19px', // Imposta la dimensione del font
+                fontSize: '18px', // Imposta la dimensione del font
                 fontFamily: 'Roboto, sans-serif ', // Imposta il font
                 padding: '10px 20px', // Imposta la dimensione del padding (spaziatura interna)
                 borderRadius: '8px', // Rende gli angoli arrotondati
@@ -20,8 +20,8 @@ export default function CustomButton(props) {
                     color: 'black',
                 },
                 boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', // Aggiunge un'ombra al bottone
-                width: props.width || 'auto',
-                height: props.height || '50px',
+                width: props.width || '300px',   //auto
+                height: props.height || '60px',  //50
             }}
         >
             {props.text}

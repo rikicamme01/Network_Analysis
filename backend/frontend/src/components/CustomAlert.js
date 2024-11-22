@@ -7,8 +7,8 @@ export default function CustomAlert(props) {
     return (
         <Alert variant="outlined" severity="success" icon={<CheckCircleOutlineIcon sx={{ fontSize: 25 }} />}
             style={{
-                height: '50px', // Altezza personalizzata
-                width: '250px',  // Larghezza personalizzata
+                height: props.width || '50px', // Altezza personalizzata
+                width: props.height || '250px',  // Larghezza personalizzata
                 display: 'flex', // Per gestire il contenuto centralmente
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -17,6 +17,6 @@ export default function CustomAlert(props) {
                 border: '2px solid ##91C58A',
             }}
         >
-            {props.title}
+            {props.text}
         </Alert>);
 }

@@ -11,13 +11,17 @@
 }
 
 .row1-dx {
-    display: flex;
+    display: grid;
     flex-direction: column;
-    margin-left: 150px;
+    margin-left: 170px;
+    width: 340px;
 }
 
 .div-button-analisi {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .div-res-gif {
@@ -30,7 +34,27 @@
 }
 
 .row2 {
-    background-color: cadetblue
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+}
+
+.div-button-download {
+    background-color: firebrick;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.div-alert-download {
+    background-color: gold;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
 }
 
 .row3 {
