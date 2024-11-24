@@ -6,6 +6,7 @@ import "../../../static/css/analisi.css"
 import CustomButton from "../../components/CustomButton";
 import CircularProgress from "../../components/CircularProgress";
 import CustomAlert from "../../components/CustomAlert";
+import FileInput from "../../components/FileInput";
 
 
 
@@ -13,7 +14,10 @@ export default function Analisi() {
     const [loading, setLoading] = useState(false);
     const [analyzed, setAnalyzed] = useState(false);
     const [content, setContent] = useState("");
-    const [download, setDownload] = useState(false)
+    const [download, setDownload] = useState(false);
+    const [output, setOutput] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [formatError, setFormatError] = useState(false)
 
 
 
@@ -24,10 +28,11 @@ export default function Analisi() {
             setAnalyzed(true);
             setContent(<TabRisultati />); // Da cambiare con componente risultati analisi
         }, 8000);
+        //aggiorna stato DB
     }
 
     const handleScaricaDataset = () => {
-       
+
         const fileUrl = '/files/example.pdf';       //file letto da DB
         const link = document.createElement('a');
         link.href = fileUrl;
@@ -35,12 +40,22 @@ export default function Analisi() {
         link.click();
         setDownload(true);
 
+        //aggiorna stato DB
+    };
+
+    const handleValueChange = (file, error) => {
+        setSelectedFile(file);
+        setFormatError(error);
+    }
+    const handleGeneraOutput = () => {
+        setOutput(true);
+        console.log(selectedFile);
     };
 
     return (
         <Layout
             title="[Name_ass]"
-            spallasx={<p>Contenuto spalla sinistra</p>}
+            spallasx={<p className="contenuto-spalla-sx">Contenuto spalla sinistra</p>} //da aggiungere pulsante indietro
             main={
                 <div className="frame">
                     <div className="row1">
@@ -70,6 +85,7 @@ export default function Analisi() {
                         </div>
 
                     </div>
+
                     {analyzed && (
                         <div className="row2">
                             <div className="div-button-download">
@@ -78,7 +94,7 @@ export default function Analisi() {
                                     onClick={handleScaricaDataset}
                                 />
                             </div>
-                            <div className="div-alert-download">
+                            <div className="div-alert">
                                 {download && (
                                     <CustomAlert text='Download completato' />
                                 )}
@@ -87,21 +103,27 @@ export default function Analisi() {
                         </div>
 
                     )}
+                    {download && (
+                        <div className="row3">
+                            <div className="div-inputFile">
+                                <FileInput handleValueChange={handleValueChange} error={formatError} ></FileInput>
 
-                    <div className="row3">
-                        <div className="">
-                            <h2>Row 3</h2>
-                        </div>
+                            </div>
+                            <div className="div-button-output">
+                                {output ? (
+                                    <CustomAlert text='Grafici generati' />  //Grafici output
+                                ) : (
+                                    <CustomButton
+                                        text='Genera grafici' // Genera output
+                                        onClick={handleGeneraOutput}
+                                        disabled={selectedFile === null}
+                                    />
 
-                    </div>
-                    <div className="row4">
-                        <div className="">
-                            <h2>Row 4</h2>
-                        </div>
+                                )}
+                            </div>
 
-                    </div>
-
-                </ div>
+                        </div>)}
+                </div>
 
             }
 

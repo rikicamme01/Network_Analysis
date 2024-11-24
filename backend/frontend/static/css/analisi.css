@@ -1,8 +1,13 @@
 .frame {
     display: grid;
     grid-template-columns: auto;
-    align-items: center;
-    background-color: aqua;
+    /* Una colonna */
+    grid-auto-rows: auto;
+    /* Le righe si espandono automaticamente in base al contenuto */
+    align-items: start;
+    /* Allinea il contenuto delle righe in alto */
+  
+    gap: 7px;
 }
 
 .row1 {
@@ -15,6 +20,7 @@
     flex-direction: column;
     margin-left: 170px;
     width: 340px;
+
 }
 
 .div-button-analisi {
@@ -34,33 +40,47 @@
 }
 
 .row2 {
-    background-color: cadetblue;
     display: flex;
     flex-direction: row;
-    height: 80px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 50px;
 }
 
 .div-button-download {
-    background-color: firebrick;
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
 }
 
-.div-alert-download {
-    background-color: gold;
+.div-alert {
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 50px;
+    height: 60px;
 }
 
 .row3 {
-    background-color: blue
+    display: flex;
+    flex-direction: row;
+    transition: all 0.5s ease-in-out;
+    margin-top: 50px;
 }
 
-.row4 {
-    background-color: chartreuse
+
+.div-button-output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-left: 50px;
+
+}
+
+
+.contenuto-spalla-sx {
+    height: 500px;
+
 }

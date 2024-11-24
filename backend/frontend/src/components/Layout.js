@@ -43,8 +43,9 @@ export default function Layout({ spallasx, main, title }) {
 }
 
 Layout.propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
+    spallasx: PropTypes.node,
+    main: PropTypes.node,
+    title: PropTypes.string,
 };
 
 Layout.defaultProps = {
