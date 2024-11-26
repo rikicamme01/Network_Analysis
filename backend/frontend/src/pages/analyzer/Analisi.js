@@ -7,10 +7,13 @@ import CustomButton from "../../components/CustomButton";
 import CircularProgress from "../../components/CircularProgress";
 import CustomAlert from "../../components/CustomAlert";
 import FileInput from "../../components/FileInput";
+import NastedListMenu from "../../components/NestedListMenu";
 
 
 
 export default function Analisi() {
+    const [main, setMain] = useState("");
+    const [selectedIndex, setSelectedIndex] = useState(1);
     const [loading, setLoading] = useState(false);
     const [analyzed, setAnalyzed] = useState(false);
     const [content, setContent] = useState("");
@@ -18,7 +21,6 @@ export default function Analisi() {
     const [output, setOutput] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [formatError, setFormatError] = useState(false)
-
 
 
     const handleAvviaAnalisi = () => {
@@ -46,16 +48,23 @@ export default function Analisi() {
     const handleValueChange = (file, error) => {
         setSelectedFile(file);
         setFormatError(error);
-    }
+        setOutput(false);
+    };
+
     const handleGeneraOutput = () => {
         setOutput(true);
         console.log(selectedFile);
     };
 
+    const handleListItemClick = (index) => {
+        setSelectedIndex(index);
+        console.log(selectedIndex);
+    }
+
     return (
         <Layout
             title="[Name_ass]"
-            spallasx={<p className="contenuto-spalla-sx">Contenuto spalla sinistra</p>} //da aggiungere pulsante indietro
+            spallasx={<NastedListMenu selectedIndex={selectedIndex} handleListItemClick={handleListItemClick}></NastedListMenu>} //da aggiungere pulsante indietro
             main={
                 <div className="frame">
                     <div className="row1">

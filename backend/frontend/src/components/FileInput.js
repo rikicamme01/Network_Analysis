@@ -24,7 +24,7 @@ export default function FileInput({ handleValueChange, error }) {
             value={value}
             onChange={handleChange}
             placeholder="Seleziona il file .xlsx"
-            title="Carica File"
+            //title="Carica File"
             error={error} // Rimuovi gestione errore dal figlio
             helperText={error && 'Formato file non supportato'}
             sx={{

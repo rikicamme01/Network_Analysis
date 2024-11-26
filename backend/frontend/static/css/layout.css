@@ -43,7 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 150px;
+    height: 130px;
 }
 
 .title {
@@ -73,6 +73,7 @@
     flex-direction: column;
     min-width: 180px;
     height: 100%;
+    background-color: crimson;
 }
 
 .logout {
