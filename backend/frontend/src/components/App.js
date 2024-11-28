@@ -25,6 +25,9 @@ export default function App(props) {
                     <Route path="/questionari" element={<Questionari />} />
                     <Route path="/reportLoading" element={<ReportLoading />} />
                     <Route path="/reportFinal" element={<ReportFinal />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/databaseAss" element={<DatabaseAss />} />
+
                 </Routes>
             </BrowserRouter>
         </OutputProvider>

@@ -16,6 +16,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 
 
 export default function NestedList({ handleListItemClick, selectedIndex }) {
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const { output } = useOutput();
 
@@ -112,8 +113,9 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
                         },
                     }}
                     onClick={() => {
+                        navigate("/databaseAss");
                         console.log("Tornando alla schermata precedente");
-                        // UseNavigate(/DatabaseAss)
+                        
                     }}
                 >
                     <ArrowBackRoundedIcon sx={{
