@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "../../static/css/analisiQuestionari.css"
 import TabRisultati from "./TabRisultati";
-import TabRisposte from "./TabRisposte";
+import TabStatus from "./TabStatus";
 import CustomButton from "./CustomButton";
 import CircularProgress from "./CircularProgress";
 import CustomAlert from "./CustomAlert";
 import FileInput from "./FileInput";
+import { useOutput } from "./Context";
 
 
 
@@ -14,10 +15,9 @@ export default function MainAnalisiQuestionari() {
     const [loading, setLoading] = useState(false);
     const [analyzed, setAnalyzed] = useState(false);
     const [download, setDownload] = useState(false);
-    const [output, setOutput] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [formatError, setFormatError] = useState(false)
-
+    const [formatError, setFormatError] = useState(false);
+    const {output, setOutput} = useOutput();
 
     const handleAvviaAnalisi = () => {
         setLoading(true);
@@ -55,7 +55,7 @@ export default function MainAnalisiQuestionari() {
         <div className="frame">
             <div className="row1">
                 <div className="row1-table">
-                    <TabRisposte time='4' ></TabRisposte>
+                    <TabStatus time='4' ></TabStatus>
                 </div>
                 <div className="row1-dx">
                     <div className="div-button-analisi">

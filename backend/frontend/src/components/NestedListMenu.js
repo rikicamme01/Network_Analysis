@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import { useOutput } from "./Context";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -7,15 +9,18 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
+
 export default function NestedList({ handleListItemClick, selectedIndex }) {
     const [open, setOpen] = React.useState(false);
+    const { output } = useOutput();
 
     const handleExpand = () => {
-        setOpen(!open);
+        setOpen((prevOpen) => !prevOpen);
     };
 
     const menuItems = [
@@ -23,17 +28,20 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
             id: 1,
             text: "Analisi questionari",
             icon: <QueryStatsIcon />,
+            isDisabled: false,
         },
         {
             id: 2,
             text: "Dashboard grafici",
             icon: <BarChartIcon />,
             isExpandable: true,
+            isDisabled: !output,
         },
         {
             id: 3,
             text: "Costruisci report",
             icon: <EditNoteIcon />,
+            isDisabled: !output,
         },
     ];
 
@@ -46,6 +54,18 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
     ];
 
     const listItemStyles = {
+        "&:hover": {
+            bgcolor: !output ? "inherit" : "#A9C4EB",
+        },
+        "&.Mui-selected": {
+            bgcolor: !output ? "inherit" : "#A9C4EB",
+        },
+        "&.Mui-selected:hover": {
+            bgcolor: !output ? "inherit" : "#A9C4EB",
+        },
+    };
+
+    const firstOptionStyle = {
         "&:hover": {
             bgcolor: "#A9C4EB",
         },
@@ -64,6 +84,8 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
                 maxWidth: 600,
                 bgcolor: "#F6F6F6",
                 width: 250,
+                borderRadius: '8px',
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)'
             }}
             component="nav"
             aria-labelledby="nested-list-subheader"
@@ -72,11 +94,35 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
                     component="div"
                     id="nested-list-subheader"
                     sx={{
-                        bgcolor: "#F6F6F6",
+                        display: "flex",
+                        alignItems: "center",
+                        bgcolor: "#F6F6F6", // Colore di sfondo
+                        borderRadius: "8px", // Angoli arrotondati
+                        padding: "8px",
+                        height: "40px", // Larghezza specifica
+                        fontFamily: "'Roboto', sans-serif", // Font personalizzato
+                        fontSize: "14px", // Dimensione del testo
+                        cursor: "pointer", // Mostra che è cliccabile
+                        transition: "background-color 0.3s ease", // Transizione per l'hover
+                        "&:hover": {
+                            //bgcolor: "#A9C4EB", // Colore di sfondo quando passi sopra
+                            color: "#22509c", // Colore del testo quando passi sopra
+                            fontWeight: "bold", // Grassetto
+                            //textDecoration: 'underline',
+                        },
+                    }}
+                    onClick={() => {
+                        console.log("Tornando alla schermata precedente");
+                        // UseNavigate(/DatabaseAss)
                     }}
                 >
-                    Nested List Items
+                    <ArrowBackRoundedIcon sx={{
+                        marginRight: "8px", fontSize: "large",
+                    }} />
+                    <span>Indietro</span>
                 </ListSubheader>
+
+
             }
         >
             {menuItems.map((item) => {
@@ -85,10 +131,13 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
                         <React.Fragment key={item.id}>
                             <ListItemButton
                                 selected={selectedIndex === item.id}
-                                onClick={handleExpand}
+                                onClick={() => { if (!item.isDisabled) handleExpand(); }}
+                                disabled={item.isDisabled}
                                 sx={listItemStyles}
                             >
-                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemIcon sx={{
+                                    minWidth: "35px", // Larghezza minima tra l'icona e il testo
+                                }}>{item.icon}</ListItemIcon>
                                 <ListItemText
                                     primary={item.text}
                                     sx={{
@@ -104,9 +153,10 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
                                             key={subItem.id}
                                             selected={selectedIndex === subItem.id}
                                             onClick={() => handleListItemClick(subItem.id)}
+                                            disabled={!output}
                                             sx={{
                                                 ...listItemStyles,
-                                                pl: 4,
+                                                pl: 8,
                                             }}
                                         >
                                             <ListItemText primary={subItem.text} />
@@ -122,9 +172,12 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
                         key={item.id}
                         selected={selectedIndex === item.id}
                         onClick={() => handleListItemClick(item.id)}
-                        sx={listItemStyles}
+                        disabled={item.isDisabled}
+                        sx={(item.id === 3) ? listItemStyles : firstOptionStyle}
                     >
-                        <ListItemIcon>{item.icon}</ListItemIcon>
+                        <ListItemIcon sx={{
+                            minWidth: "35px", // Larghezza minima tra l'icona e il testo
+                        }}>{item.icon}</ListItemIcon>
                         <ListItemText
                             primary={item.text}
                             sx={{

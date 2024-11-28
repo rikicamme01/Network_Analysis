@@ -50,4 +50,6 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
     className: '',
+    title: 'Title',
+    spallasx: '',
 };

@@ -22,6 +22,7 @@
     height: 100%;
     /* Occupa tutta l'altezza della finestra */
     background-color: #22509c;
+    box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .img-Dialogica-logo {
@@ -43,7 +44,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 130px;
+    height: 120px;
 }
 
 .title {
