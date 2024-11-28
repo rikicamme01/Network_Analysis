@@ -90,9 +90,9 @@ export default function TabAssessment({ handleSelection }) {
                     '& .custom-header': {
                         fontWeight: 'bold',
                         fontFamily: 'Roboto, sans-serif',
-                        fontSize: '17px', 
+                        fontSize: '18px',
                         backgroundColor: '#22509c',
-                        color:'#F6F6F6',
+                        color: '#F6F6F6',
                     },
                     // Stile per le righe
                     '& .MuiDataGrid-row': {
@@ -107,7 +107,10 @@ export default function TabAssessment({ handleSelection }) {
                         backgroundColor: '#A9C4EB', // Colore di sfondo della riga selezionata durante l'hover
                     },
                     '& .MuiDataGrid-cell.Mui-selected': {
-                        outline: 'none', // Rimuove il bordo della cella selezionata
+                        outline: '#dc143c', // Rimuove il bordo della cella selezionata
+                    },
+                    '& .MuiDataGrid-columnHeader .MuiDataGrid-sortIcon': {
+                        color: '#F6F6F6', // Cambia il colore delle frecce
                     },
                 }}
             />
