@@ -54,8 +54,8 @@ const columns = [
             }
             const date = new Date(params.value);
             // Use a DateTimeFormatter for customizable formatting
-            const formatter = new DateTimeFormatter(esES); // Adjust locale (optional)
-            return formatter.format(date, 'dd/MM/yyyy'); // Customize format as needed
+            //const formatter = new DateTimeFormatter(esES); // Adjust locale (optional)
+            return date //formatter.format(date, 'dd/MM/yyyy'); // Customize format as needed
         },
     },
     { field: 'status', headerName: 'Status', width: 200, headerClassName: 'custom-header', },
@@ -87,6 +87,9 @@ export default function TabAssessment({ handleSelection }) {
                     },
                 }}
                 sx={{
+                    "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+                        outline: "none !important",
+                    },
                     '& .custom-header': {
                         fontWeight: 'bold',
                         fontFamily: 'Roboto, sans-serif',

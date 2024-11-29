@@ -9,7 +9,7 @@ export default function CustomButton(props) {
             variant="contained" // Tipo di bottone, "contained" per uno stile pieno
             color="primary" // Colore predefinito, può essere "primary", "secondary", "error", etc.
             sx={{
-                fontSize: '17px', // Imposta la dimensione del font
+                fontSize: '18px', // Imposta la dimensione del font
                 fontFamily: 'Roboto, sans-serif ', // Imposta il font
                 padding: '10px 20px', // Imposta la dimensione del padding (spaziatura interna)
                 borderRadius: '8px', // Rende gli angoli arrotondati

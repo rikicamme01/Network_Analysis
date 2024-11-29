@@ -1,0 +1,11 @@
+.div-text-button {
+    display: flex;
+    flex-direction: column;
+    
+    width: 80%;
+    justify-content: left;
+}
+
+.div-text-field {
+    margin-top: 30px;
+}
