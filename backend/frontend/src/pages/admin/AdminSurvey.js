@@ -82,12 +82,12 @@ export default function AdminSurvey() {
                             <div className="div-opzioni">
                                 <div className="div-counter" >
                                     <div style={{ marginLeft: 30, display: "flex", alignItems: "center", justifyContent: "center" }} >
-                                        <CircleIcon style={{ fontSize: "15px" }} />
+                                        <CircleIcon style={{ fontSize: "13px" }} />
                                     </div>
-                                    <div style={{ marginLeft: 8 }}>
+                                    <div style={{ marginLeft: 8, width: 170 }}>
                                         <span className="domanda">Ruolo gestionale</span>
                                     </div>
-                                    <div style={{ marginLeft: 20 }}>
+                                    <div>
                                         <CustomTextField
                                             type="number"
                                             width="90px"
@@ -97,12 +97,12 @@ export default function AdminSurvey() {
                                 </div>
                                 <div className="div-counter" >
                                     <div style={{ marginLeft: 30, display: "flex", alignItems: "center", justifyContent: "center" }} >
-                                        <CircleIcon style={{ fontSize: "15px" }} />
+                                        <CircleIcon style={{ fontSize: "13px" }} />
                                     </div>
-                                    <div style={{ marginLeft: 8 }}>
+                                    <div style={{ marginLeft: 8, width: 170 }}>
                                         <span className="domanda">Ruolo decisionale</span>
                                     </div>
-                                    <div style={{ marginLeft: 20 }}>
+                                    <div>
                                         <CustomTextField
                                             type="number"
                                             width="90px"
@@ -112,12 +112,12 @@ export default function AdminSurvey() {
                                 </div>
                                 <div className="div-counter" >
                                     <div style={{ marginLeft: 30, display: "flex", alignItems: "center", justifyContent: "center" }} >
-                                        <CircleIcon style={{ fontSize: "15px" }} />
+                                        <CircleIcon style={{ fontSize: "13px" }} />
                                     </div>
-                                    <div style={{ marginLeft: 8 }}>
+                                    <div style={{ marginLeft: 8, width: 170 }}>
                                         <span className="domanda">Ruolo operativo</span>
                                     </div>
-                                    <div style={{ marginLeft: 20 }}>
+                                    <div >
                                         <CustomTextField
                                             type="number"
                                             width="90px"
@@ -125,6 +125,15 @@ export default function AdminSurvey() {
 
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span className="domanda">10. Considerando le risposte alla domande 8 e 9, qual è la grandezza del campione totale dell’indagine?</span>
+                            <div className="div-opzioni">
+                                <CustomTextField //style={{ marginLeft: 30 }}
+                                    type="number"
+                                    width="90px"
+                                />
                             </div>
                         </div>
 
