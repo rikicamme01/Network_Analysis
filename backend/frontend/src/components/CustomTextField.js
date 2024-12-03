@@ -11,6 +11,7 @@ export default function CustomTextField(props) {
 
             sx={{
                 width: props.width || 'auto',
+                height: props.height || 'auto',
                 "& .MuiOutlinedInput-root": {
                     fontSize: props.fontSize || '17px',
                     fontFamily: props.fontFamily || 'Roboto, sans-serif',
