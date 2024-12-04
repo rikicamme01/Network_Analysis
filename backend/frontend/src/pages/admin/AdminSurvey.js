@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import FasiAdmin from "../../components/FasiAdmin";
 import CustomAlert from "../../components/CustomAlert";
@@ -7,15 +7,81 @@ import GridTematiche from "../../components/GridTematiche";
 import CustomTextField from "../../components/CustomTextField";
 import CircleIcon from '@mui/icons-material/Circle';
 
+
 import "../../../static/css/adminSurvey.css"
 import TextFieldMultiOptions from "../../components/TextFieldMultiOptions";
 
 
+//oggeto json extra creato da DB e passato per inizializzare valori responses
+/*const responsesDB = {
+    tematica: "Sostenibilità",
+    organizzazione: "prova 2",
+    formaGiuridica: "prova 3",
+    mission: "prova 4",
+    areeInterna: ["prova 5.1", "prova 5.2", "prova 5.3"],
+    progettiConclusi: [],
+    progettiInCorso: [],
+    areeCoinvolte: [],
+    numeroRuoli: {
+        gestionale: 23,
+        decisionale: 24,
+        operativo: 25,
+    },
+    grandezzaCampione: 0,
+};*/
+
+const responsesDB = {
+    tematica: "",
+    organizzazione: "",
+    formaGiuridica: "",
+    mission: "",
+    areeInterna: [""],
+    progettiConclusi: [],
+    progettiInCorso: [],
+    areeCoinvolte: [],
+    numeroRuoli: {
+        gestionale: 0,
+        decisionale: 0,
+        operativo: 0,
+    },
+    grandezzaCampione: 0,
+};
 
 export default function AdminSurvey() {
+    const [showAlert, setShowAlert] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [buttonDisable, setButtonDisable] = useState(true);
+
+    const [responses, setResponses] = useState(responsesDB);
+
+
+    const handleInputChange = (key, value) => {
+        setButtonDisable(false)
+        setResponses((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    };
+
+    const handleRuoloChange = (ruolo, value) => {
+        setButtonDisable(false)
+        setResponses((prev) => ({
+            ...prev,
+            numeroRuoli: {
+                ...prev.numeroRuoli,
+                [ruolo]: value,
+            },
+        }));
+    };
 
     const handleSave = () => {
-        console.log("")
+        console.log("Salvataggio delle risposte: ", responses);
+        setButtonDisable(true)
+
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
     }
 
     return (
@@ -31,50 +97,50 @@ export default function AdminSurvey() {
                         <div>
                             <span className="domanda">1. Scegli la tematica su cui svolgere l'indagine</span>
                             <div className="div-opzioni">
-                                <GridTematiche />
+                                <GridTematiche onSelect={(label) => handleInputChange("tematica", label)} value={responses.tematica} />
                             </div>
                         </div>
                         <div>
                             <span className="domanda">2. Di cosa si occupa la tua organizzazione? </span>
                             <div className="div-opzioni">
-                                <CustomTextField width="600px" />
+                                <CustomTextField width="600px" onChange={(e) => handleInputChange("organizzazione", e.target.value)} value={responses.organizzazione} />
                             </div>
                         </div>
 
                         <div>
                             <span className="domanda">3. Qual è la forma giuridica dell'organizzazione? </span>
                             <div className="div-opzioni">
-                                <CustomTextField width="600px" />
+                                <CustomTextField width="600px" onChange={(e) => handleInputChange("formaGiuridica", e.target.value)} value={responses.formaGiuridica} />
                             </div>
                         </div>
                         <div>
                             <span className="domanda">4. Qual è la Mission della tua organizzazione? </span>
                             <div className="div-opzioni">
-                                <CustomTextField width="600px" />
+                                <CustomTextField width="600px" onChange={(e) => handleInputChange("mission", e.target.value)} value={responses.mission} />
                             </div>
                         </div>
                         <div>
                             <span className="domanda">5. Elenco di aree/dipartimenti/divisioni interne all’organizzazione  </span>
                             <div className="div-opzioni">
-                                <TextFieldMultiOptions />
+                                <TextFieldMultiOptions onChange={(values) => handleInputChange("areeInterna", values)} value={responses.areeInterna} />
                             </div>
                         </div>
                         <div>
                             <span className="domanda">6. Quali attività/progetti sono stati realizzati e conclusi negli ultimi 3 anni  dall’organizzazione rispetto al tema che ha scelto?  </span>
                             <div className="div-opzioni">
-                                <TextFieldMultiOptions />
+                                <TextFieldMultiOptions onChange={(values) => handleInputChange("progettiConclusi", values)} />
                             </div>
                         </div>
                         <div>
                             <span className="domanda">7. Quali attività/progetti sono in corso di sviluppo rispetto al tema che ha scelto?</span>
                             <div className="div-opzioni">
-                                <TextFieldMultiOptions />
+                                <TextFieldMultiOptions onChange={(values) => handleInputChange("progettiInCorso", values)} />
                             </div>
                         </div>
                         <div>
                             <span className="domanda">8. Quali sono le aree/dipartimenti/divisioni che ritieni possano essere coinvolti in questa indagine?</span>
                             <div className="div-opzioni">
-                                <TextFieldMultiOptions />
+                                <TextFieldMultiOptions onChange={(values) => handleInputChange("areeCoinvolte", values)} />
                             </div>
                         </div>
                         <div>
@@ -91,6 +157,9 @@ export default function AdminSurvey() {
                                         <CustomTextField
                                             type="number"
                                             width="90px"
+                                            onChange={(e) => handleRuoloChange("gestionale", e.target.value)}
+                                            value={responses.numeroRuoli.gestionale}
+
                                         />
 
                                     </div>
@@ -106,6 +175,8 @@ export default function AdminSurvey() {
                                         <CustomTextField
                                             type="number"
                                             width="90px"
+                                            onChange={(e) => handleRuoloChange("decisionale", e.target.value)}
+                                            value={responses.numeroRuoli.decisionale}
                                         />
 
                                     </div>
@@ -121,6 +192,8 @@ export default function AdminSurvey() {
                                         <CustomTextField
                                             type="number"
                                             width="90px"
+                                            onChange={(e) => handleRuoloChange("operativo", e.target.value)}
+                                            value={responses.numeroRuoli.operativo}
                                         />
 
                                     </div>
@@ -133,6 +206,9 @@ export default function AdminSurvey() {
                                 <CustomTextField //style={{ marginLeft: 30 }}
                                     type="number"
                                     width="90px"
+                                    onChange={(e) => handleInputChange("grandezzaCampione", e.target.value)}
+                                    value={responses.grandezzaCampione}
+
                                 />
                             </div>
                         </div>
@@ -150,7 +226,7 @@ export default function AdminSurvey() {
                                     text='Salva'
                                     width='220px'
                                     onClick={handleSave}
-
+                                    disabled={buttonDisable}
                                 />
                             </div>
 
@@ -158,13 +234,8 @@ export default function AdminSurvey() {
                                 Progress
                             </div>
                         </div>
-                        <div className="div-alert">
-                            <CustomAlert
-                                text='Survey salvata'
-
-
-
-                            />
+                        <div className={`alert-message fade-alert ${!showAlert ? "hidden" : ""}`}>
+                            {showAlert && <CustomAlert text="Survey salvata" />}
                         </div>
 
                     </div>

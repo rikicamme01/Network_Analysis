@@ -4,7 +4,7 @@
     align-items: center;
     gap: 50px;
     /* Spaziatura tra i div */
-    background-color: brown;
+    /*background-color: brown;
     /*padding: 20px;*/
     width: 980px;
     margin-bottom: 200px;
@@ -28,7 +28,7 @@
 }
 
 .div-domande {
-    background-color: aqua;
+   /*background-color: aqua;*/
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -39,7 +39,7 @@
 
 .div-opzioni {
     margin-top: 15px;
-    background-color: blueviolet;
+   /* background-color: blueviolet;*/
     width: 100%;
     height: auto;
     display: flex;
@@ -71,7 +71,7 @@
 }
 
 .div-terza-riga {
-    background-color: lightsalmon;
+   /* background-color: lightsalmon;*/
     width: 100%;
 
     display: flex;
@@ -82,7 +82,7 @@
 }
 
 .div-salva {
-    background-color: lawngreen;
+   /* background-color: lawngreen;*/
     display: grid;
     grid-template-columns: 1fr;
     /* Una sola colonna */
@@ -92,7 +92,7 @@
 }
 
 .button-salva {
-    background-color: violet;
+ /*   background-color: violet;*/
     align-items: center;
     justify-content: center;
 
@@ -104,6 +104,13 @@
     justify-content: center;
 }
 
-.div-alert {
-    background-color: blueviolet;
+.fade-alert {
+    opacity: 1;
+    transition: opacity 0.5s ease-out; /* Dissolvenza in 0.5s */
+    margin-left: 60px;
+}
+
+.fade-alert.hidden {
+    opacity: 0;
+    margin-left: 60px;
 }

@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CustomTextField from "./CustomTextField";
 
-export default function TextFieldMultiOptions() {
-    const [fields, setFields] = useState([""]); // Array di textfields inizialmente con un elemento
+export default function TextFieldMultiOptions({ onChange, value }) {
+    const [fields, setFields] = useState(Array.isArray(value) ? value : [""]);
 
     const addField = () => {
-        setFields([...fields, ""]); // Aggiunge un nuovo campo vuoto
+        const newFields = [...fields, ""];  //aggiunge un campo vuoto
+        setFields(newFields);
+        //onChange(newFields);
+    };
+
+    const updateField = (index, newValue) => {
+        const newFields = [...fields];
+        newFields[index] = newValue;
+        setFields(newFields);
+
+        const filteredFields = newFields.filter((field) => field.trim() !== "");
+        onChange(filteredFields); // Aggiorna lo stato genitore
     };
 
     return (
         <div style={{ width: "100%", maxWidth: "500px" }}>
             {fields.map((value, index) => (
                 <div key={index} style={{ marginBottom: "10px" }}>
-                    <CustomTextField value={value} width="600px" />
+                    <CustomTextField
+                        value={value}
+                        width="600px"
+                        onChange={(e) => updateField(index, e.target.value)}
+                    />
                 </div>
             ))}
 
