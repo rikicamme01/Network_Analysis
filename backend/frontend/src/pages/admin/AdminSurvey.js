@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 import FasiAdmin from "../../components/FasiAdmin";
 import CustomAlert from "../../components/CustomAlert";
@@ -6,6 +7,7 @@ import CustomButton from "../../components/CustomButton";
 import GridTematiche from "../../components/GridTematiche";
 import CustomTextField from "../../components/CustomTextField";
 import CircleIcon from '@mui/icons-material/Circle';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 import "../../../static/css/adminSurvey.css"
@@ -13,7 +15,7 @@ import TextFieldMultiOptions from "../../components/TextFieldMultiOptions";
 
 
 //oggeto json extra creato da DB e passato per inizializzare valori responses
-/*const responsesDB = {
+const responsesDB = {
     tematica: "Sostenibilità",
     organizzazione: "prova 2",
     formaGiuridica: "prova 3",
@@ -28,9 +30,9 @@ import TextFieldMultiOptions from "../../components/TextFieldMultiOptions";
         operativo: 25,
     },
     grandezzaCampione: 0,
-};*/
+};
 
-const responsesDB = {
+/*const responsesDB = {
     tematica: "",
     organizzazione: "",
     formaGiuridica: "",
@@ -45,14 +47,14 @@ const responsesDB = {
         operativo: 0,
     },
     grandezzaCampione: 0,
-};
+};*/
 
 export default function AdminSurvey() {
     const [showAlert, setShowAlert] = useState(false);
     const [progress, setProgress] = useState(0);
     const [buttonDisable, setButtonDisable] = useState(true);
-
     const [responses, setResponses] = useState(responsesDB);
+    const navigate = useNavigate();
 
 
     const handleInputChange = (key, value) => {
@@ -79,10 +81,43 @@ export default function AdminSurvey() {
         setButtonDisable(true)
 
         setShowAlert(true);
-        setTimeout(() => {
+        setTimeout(() => {                  //simula salvataggio su DB
             setShowAlert(false);
         }, 3000);
+        if (progress === 100) {
+            //browser alert
+            const userConfirmed = window.confirm("Hai completato il 100% della pre-survey. Vuoi continuare?");
+            if (userConfirmed) {
+                navigate("/questionari"); // Naviga alla nuova pagina
+            }
+
+        }
     }
+
+    const getProgressColor = (value) => {
+        if (value < 50) return "#dc143c"; // Rosso
+        if (value <= 90) return "#F7A714"; // Arancione
+        return "#5BC69A"; // Verde
+    };
+
+    useEffect(() => {
+        // Calcolo del progresso
+        const totalFields = 10; // Numero totale di domande
+        let filledFields = 0;
+
+        if (responses.tematica) filledFields++;
+        if (responses.organizzazione) filledFields++;
+        if (responses.formaGiuridica) filledFields++;
+        if (responses.mission) filledFields++;
+        if (responses.areeInterna.length > 0) filledFields++;
+        if (responses.progettiConclusi.length > 0) filledFields++;
+        if (responses.progettiInCorso.length > 0) filledFields++;
+        if (responses.areeCoinvolte.length > 0) filledFields++;
+        if (responses.numeroRuoli.gestionale > 0 && responses.numeroRuoli.decisionale > 0 && responses.numeroRuoli.operativo > 0) filledFields++;
+        if (responses.grandezzaCampione > 0) filledFields++;
+
+        setProgress(Math.round((filledFields / totalFields) * 100));
+    }, [responses]);
 
     return (
         <Layout
@@ -231,7 +266,17 @@ export default function AdminSurvey() {
                             </div>
 
                             <div className="progress">
-                                Progress
+                                <LinearProgress
+                                    variant="determinate"
+                                    value={progress}
+                                    sx={{
+                                        height: 7, // Spessore della barra
+                                        borderRadius: 5, // Arrotondamento degli angoli
+                                        "& .MuiLinearProgress-bar": {
+                                            backgroundColor: getProgressColor(progress), // Colore in base al progresso
+                                        },
+                                    }}
+                                />
                             </div>
                         </div>
                         <div className={`alert-message fade-alert ${!showAlert ? "hidden" : ""}`}>

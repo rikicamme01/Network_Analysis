@@ -71,7 +71,7 @@
 }
 
 .div-terza-riga {
-   /* background-color: lightsalmon;*/
+    /*background-color: lightsalmon;*/
     width: 100%;
 
     display: flex;
@@ -92,25 +92,26 @@
 }
 
 .button-salva {
- /*   background-color: violet;*/
+  /*  background-color: violet;*/
     align-items: center;
     justify-content: center;
 
 }
 
 .progress {
-    background-color: red;
     align-items: center;
     justify-content: center;
+    margin-top: 15px;
+
 }
 
 .fade-alert {
     opacity: 1;
     transition: opacity 0.5s ease-out; /* Dissolvenza in 0.5s */
-    margin-left: 60px;
+    margin-left: 70px;
 }
 
 .fade-alert.hidden {
     opacity: 0;
-    margin-left: 60px;
+    margin-left: 70px;
 }
