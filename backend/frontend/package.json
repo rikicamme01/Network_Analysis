@@ -29,6 +29,7 @@
     "@mui/x-data-grid-generator": "^7.22.3",
     "boostrap": "^2.0.0",
     "bootstrap-icons": "^1.11.3",
+    "lottie-react": "^2.4.0",
     "mui-file-input": "^6.0.0",
     "react-bootstrap": "^2.10.5",
     "react-bootstrap-icons": "^1.11.4",

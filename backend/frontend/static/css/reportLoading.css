@@ -1,0 +1,48 @@
+.div-genitore-load {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    /*padding: 20px;*/
+
+    width: 980px;
+    margin-bottom: 200px;
+}
+
+.div-testo {
+    background-color: #CCCCCC;
+    width: 100%;
+    height: auto;
+
+    justify-content: flex-start;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+
+.div-tab-status {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.div-gif {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.gif{
+    box-sizing: "border-box";
+    padding: 0px;
+}

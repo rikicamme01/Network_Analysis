@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Prova from '../components/Prova';
-import ExamplePage from '../pages/ExamplePage';
 import Login from "../pages/Login";
 import NewAss from "../pages/admin/NewAss";
 import AdminSurvey from "../pages/admin/AdminSurvey";
@@ -18,7 +16,7 @@ export default function App(props) {
         <OutputProvider>
             <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true, }}>
                 <Routes>
-                    <Route path="/" element={<AdminSurvey />} />
+                    <Route path="/" element={<Questionari />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/newAss" element={<NewAss />} />
                     <Route path="/adminSurvey" element={<AdminSurvey />} />
