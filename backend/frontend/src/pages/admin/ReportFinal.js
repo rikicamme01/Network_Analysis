@@ -14,7 +14,7 @@ export default function ReportFinal() {
         const fileUrl = '/files/example.pdf';       //file letto da DB
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.download = 'example.pdf'; // Salvato con NomeAss_data.xlsx
+        link.download = 'NomeAss_report.pdf';
         link.click();
 
         setShowAlert(true);

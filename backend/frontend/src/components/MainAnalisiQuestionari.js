@@ -17,7 +17,7 @@ export default function MainAnalisiQuestionari() {
     const [download, setDownload] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [formatError, setFormatError] = useState(false);
-    const {output, setOutput} = useOutput();
+    const { output, setOutput } = useOutput();
 
     const handleAvviaAnalisi = () => {
         setLoading(true);
@@ -31,9 +31,14 @@ export default function MainAnalisiQuestionari() {
 
     const handleScaricaDataset = () => {
         const fileUrl = '/files/example.pdf';       //file letto da DB
+
+        const currentDate = new Date();
+        const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}_${String(currentDate.getMonth() + 1).padStart(2, '0')}_${String(currentDate.getFullYear()).slice(-2)}`;
+        const fileName = `dataset_NameAss_${formattedDate}.xlsx`;
+
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.download = 'example.pdf'; // Salvato con NomeAss_data.xlsx
+        link.download = fileName; // Salvato con NomeAss_data.xlsx
         link.click();
         setDownload(true);
 
