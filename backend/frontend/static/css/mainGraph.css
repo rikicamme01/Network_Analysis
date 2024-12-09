@@ -1,0 +1,58 @@
+.div-genitore-graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    /*padding: 20px;*/
+
+    width: 980px;
+    margin-bottom: 200px;
+    background-color: yellow;
+}
+
+.div-title-graph {              /*xes Distribuzione Repertori Discorsivi, Distribuzione Arcipelaghi di significato, Legami fra RD */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    width: 100%;
+
+
+    background-color: deepskyblue;
+
+}
+
+.div-subtitle-graph {           /*xes: Per Gruppo, per Repertorio Discorsivo, AdS per RD */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+
+
+    background-color: indianred;
+
+}
+
+.div-tab-graph {
+    background-color: brown;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.tab {
+    background-color: aqua;
+    width: 100%;
+}
+
+.graph {
+    background-color: blueviolet;
+    width: 100%;
+}

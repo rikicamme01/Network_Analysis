@@ -1,8 +1,10 @@
 import plotly.express as px
 import plotly
 import json
+from .distribuzioneRD import prepareDf   
 
 bg_color = '#002C2C'
+df=prepareDf()      #forse ha senso chiamarla direttamente in react
 
 def pie_chart_RD(df):
   fig = px.pie(df,

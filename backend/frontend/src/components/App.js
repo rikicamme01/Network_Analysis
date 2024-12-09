@@ -8,6 +8,7 @@ import ReportLoading from "../pages/admin/ReportLoading";
 import ReportFinal from "../pages/admin/ReportFinal";
 import Dashboard from "../pages/analyzer/Dashboard";
 import DatabaseAss from "../pages/analyzer/DatabaseAss";
+import DistribuzioneRD from "./mainGrafici/DistribuzioneRD";
 import { OutputProvider } from "./Context";
 import "../../static/css/style.css"
 

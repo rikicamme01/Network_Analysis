@@ -8,6 +8,7 @@ import IndiceCoesione from "../../components/mainGrafici/IndiceCoesione";
 import LegamiRD from "../../components/mainGrafici/LegamiRD";
 import PesoMomento from "../../components/mainGrafici/PesoMomento";
 import MainReport from "../../components/MainReport";
+import "../../../static/css/mainGraph.css"
 
 
 export default function Dashboard() {

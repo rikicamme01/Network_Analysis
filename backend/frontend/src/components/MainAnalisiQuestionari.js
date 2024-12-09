@@ -12,9 +12,9 @@ import { useOutput } from "./Context";
 
 export default function MainAnalisiQuestionari() {
     const [content, setContent] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [analyzed, setAnalyzed] = useState(false);
-    const [download, setDownload] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [analyzed, setAnalyzed] = useState(true);
+    const [download, setDownload] = useState(true);
     const [selectedFile, setSelectedFile] = useState(null);
     const [formatError, setFormatError] = useState(false);
     const { output, setOutput } = useOutput();
