@@ -2,57 +2,128 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     /*padding: 20px;*/
 
     width: 980px;
     margin-bottom: 200px;
-    background-color: yellow;
+    /*background-color: yellow;*/
 }
 
-.div-title-graph {              /*xes Distribuzione Repertori Discorsivi, Distribuzione Arcipelaghi di significato, Legami fra RD */
+.div-title-graph {
+    /* Gestisce il layout del contenitore */
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: left;
+    flex-direction: row;
+    align-items: center;
+    /* Centra verticalmente gli elementi */
+    justify-content: space-between;
+    /* Posiziona il titolo a sinistra e il bottone a destra */
     width: 100%;
-
-
-    background-color: deepskyblue;
-
 }
 
-.div-subtitle-graph {           /*xes: Per Gruppo, per Repertorio Discorsivo, AdS per RD */
+.title-graph {
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.div-filtro {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.div-subtitle-graph {
+    /*xes: Per Gruppo, per Repertorio Discorsivo, AdS per RD */
+    display: flex;
     align-items: flex-start;
     justify-content: left;
-    font-size: large;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    font-family: 'Roboto', sans-serif;
     width: 100%;
+    color: #22509C;
+    text-decoration: underline;
 
 
-    background-color: indianred;
+    /*background-color: indianred;*/
 
 }
 
 .div-tab-graph {
-    background-color: brown;
+    /*background-color: brown;*/
     width: 100%;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 20px
+}
+
+.div-tab-graph-up-down {
+    /*background-color: brown;*/
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 
 }
 
 .tab {
-    background-color: aqua;
-    width: 100%;
+    flex: 2;
+    /*background-color: aqua;*/
+    overflow: hidden;
 }
 
 .graph {
-    background-color: blueviolet;
+    flex: 3;
+    background-color: #A9C4EB;
+    overflow: hidden;
+    display: flex;
+    /* Usa Flexbox per centrare il contenuto */
+    justify-content: center;
+    /* Centra orizzontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    position: relative;
+    /* Necessario per gestire il posizionamento dell'immagine */
+    border-radius: 8px;
+}
+
+.graph-img {
+    width: 450px;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.tab-up-down {
+    /*background-color: aqua;*/
+    overflow: hidden;
+}
+
+.graph-up-down {
+    background-color: #A9C4EB;
+    overflow: hidden;
+    display: flex;
+    /* Usa Flexbox per centrare il contenuto */
+    justify-content: center;
+    /* Centra orizzontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    position: relative;
+    /* Necessario per gestire il posizionamento dell'immagine */
+    border-radius: 8px;
     width: 100%;
+}
+
+.graph-img-up-down {
+    width: 750px;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
 }

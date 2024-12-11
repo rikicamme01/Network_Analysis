@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly as pl
 import numpy as np
+import os 
 #import streamlit as st
 
 REP= [
@@ -174,12 +175,45 @@ def print_req(nan_dict):
         print(f'Elementi mancanti nella colonna {key}: {value}')
   return False
 
+REP_GENERATIVI = ['descrizione', 'proposta','considerazione', 'anticipazione', 'riferimento all\'obiettivo']
+REP_IBRIDI = ['conferma','specificazione','valutazione','possibilità','implicazione']
+REP_MANTENIMENTO = ['sancire','causa','opinione','giustificazione']
 
+def df_freq(df, column):
+  if column in df.columns:
+    dict_col = df[column].value_counts().to_dict()
+    new_df = pd.DataFrame(list(dict_col.items()), columns=['Classe', 'Num'])
+    new_df['Frequenza'] = ((new_df['Num'] / new_df['Num'].sum()) * 100).round(2)
+    return new_df
+  else:
+    raise ValueError (f'The column \'{column}\' is not in {list(df.columns)}')
+
+def count_rep_group(df):
+  dict_rep = df['Repertorio'].value_counts().to_dict()
+  # Creazione del nuovo dizionario
+  dict_group = {'Generativi': 0, 'Ibridi': 0, 'Mantenimento': 0}
+
+  # Iterazione sul dizionario originale
+  for key, value in dict_rep.items():
+      if key in REP_GENERATIVI:
+        dict_group['Generativi'] += value
+      elif key in REP_IBRIDI:
+        dict_group['Ibridi']+= value
+      elif key in REP_MANTENIMENTO:
+        dict_group['Mantenimento'] += value
+      else:
+        raise ValueError(f"There is an unknown rep: '{key}'")
+
+  new_df = pd.DataFrame(list(dict_group.items()), columns=['Classe', 'Num'])
+  new_df['Frequenza'] = ((new_df['Num'] / new_df['Num'].sum()) * 100).round(2)
+  return new_df
 
 ##################################################################################################################
 def prepareDf():
-    path="./Prova_denominazione.xlsx"    #leggerà da DB
+    current_dir = os.path.dirname(os.path.abspath(__file__))  # Percorso della cartella "Graph"
+    path = os.path.join(current_dir, "Prova_denominazione.xlsx")
     df = pd.read_excel(path)
     new_df = clean_df(df)
     new_df = new_df.loc[:, ['Domanda', 'Età', 'Genere', 'Ruolo', 'Repertorio', 'Ads', 'num_risposta']]
+    new_df=count_rep_group(new_df)
     return new_df

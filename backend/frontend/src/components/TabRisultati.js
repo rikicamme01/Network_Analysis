@@ -7,16 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(type, numbers,) {
-    return { type, numbers };
-}
-
-const rows = [
-    createData('N° Risposte', 248),
-    createData('N° Stralci', 673),
-    createData('N° RD da revisionare', 66),
-];
-
 export default function TabRisultati(props) {
     return (
         <div className='frame'>
@@ -34,7 +24,7 @@ export default function TabRisultati(props) {
                     aria- label="a dense table"
                     sx={{
                         minWidth: 100,
-                        backgroundColor: '#22509c',
+                        backgroundColor: '#22509c' || props.backgroundColor,
                         '& td, & th': {
                             fontFamily: 'Roboto, sans-serif',
                             fontSize: '15px',
@@ -45,7 +35,7 @@ export default function TabRisultati(props) {
                     }} >
 
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {props.rows.map((row, index) => (
                             <TableRow
                                 key={row.role}
                                 sx={{

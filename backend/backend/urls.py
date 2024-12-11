@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/', include('api.urls')),
+    path('api/pie_chart_RD/', views.get_pie_chart_RD, name='pie_chart_RD'),
 
     path('', include('frontend.urls'))
 ]

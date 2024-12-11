@@ -12,19 +12,29 @@ import { useOutput } from "./Context";
 
 export default function MainAnalisiQuestionari() {
     const [content, setContent] = useState("");
-    const [loading, setLoading] = useState(true);
-    const [analyzed, setAnalyzed] = useState(true);
-    const [download, setDownload] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [analyzed, setAnalyzed] = useState(false);
+    const [download, setDownload] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [formatError, setFormatError] = useState(false);
     const { output, setOutput } = useOutput();
+
+    function createData(type, numbers,) {
+        return { type, numbers };
+    }
+
+    const rows = [
+        createData('N° Risposte', 248),
+        createData('N° Stralci', 673),
+        createData('N° RD da revisionare', 65),
+    ];
 
     const handleAvviaAnalisi = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
             setAnalyzed(true);
-            setContent(<TabRisultati />); // Da cambiare con componente risultati analisi
+            setContent(<TabRisultati rows={rows} />); // Da cambiare con componente risultati analisi
         }, 8000);
         //aggiorna stato DB
     };
