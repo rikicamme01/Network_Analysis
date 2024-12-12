@@ -121,7 +121,7 @@ export default function AdminSurvey() {
 
     return (
         <Layout
-            title="Nome_ass"
+            title="Assessment A"
             spallasx={<FasiAdmin status={[1, 0, 0]} />}
             main={
                 <div className="div-genitore">

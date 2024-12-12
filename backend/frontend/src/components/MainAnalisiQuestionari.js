@@ -40,11 +40,12 @@ export default function MainAnalisiQuestionari() {
     };
 
     const handleScaricaDataset = () => {
-        const fileUrl = '/files/example.pdf';       //file letto da DB
+        const fileUrl = '';       //file letto da DB
+        ///Users/riccardo/Desktop/Network_Analysis/Network_Analysis/backend/frontend/src/components/test.xlsx
 
         const currentDate = new Date();
         const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}_${String(currentDate.getMonth() + 1).padStart(2, '0')}_${String(currentDate.getFullYear()).slice(-2)}`;
-        const fileName = `dataset_NameAss_${formattedDate}.xlsx`;
+        const fileName = `dataset_Assessment_A_${formattedDate}.xlsx`;
 
         const link = document.createElement('a');
         link.href = fileUrl;

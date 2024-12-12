@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Layout from "../../components/Layout";
 import NastedListMenu from "../../components/NestedListMenu";
 import MainAnalisiQuestionari from "../../components/MainAnalisiQuestionari";
@@ -14,6 +14,7 @@ import "../../../static/css/mainGraph.css"
 export default function Dashboard() {
     const [selectedIndex, setSelectedIndex] = useState(1);
     const [content, setContent] = useState(<MainAnalisiQuestionari />);
+
 
 
     const handleListItemClick = (index) => {
@@ -39,11 +40,12 @@ export default function Dashboard() {
         if (index === 3) {
             setContent(<MainReport />)
         }
+
     }
 
     return (
         <Layout
-            title="[Name_ass]"
+            title="Assessment A"
             spallasx={<NastedListMenu selectedIndex={selectedIndex} handleListItemClick={handleListItemClick}></NastedListMenu>} //da aggiungere pulsante indietro
             main={content}
 

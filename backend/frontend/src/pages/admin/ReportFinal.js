@@ -39,7 +39,7 @@ export default function ReportFinal() {
     }
     return (
         <Layout
-            title="[Name_ass]"
+            title="Assessment A"
             spallasx={<FasiAdmin status={[2, 2, 2]} />}
             main={
                 <div className="div-genitore-report">

@@ -22,9 +22,8 @@
 }
 
 .title-graph {
-    font-size: 22px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .div-filtro {
@@ -74,13 +73,21 @@
 }
 
 .tab {
-    flex: 2;
+    flex: 4;
     /*background-color: aqua;*/
     overflow: hidden;
 }
+.index{
+    flex:1;
+    font-size: 19px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    color: #22509C;
+    text-decoration: underline;
+}
 
 .graph {
-    flex: 3;
+    flex: auto;
     background-color: #A9C4EB;
     overflow: hidden;
     display: flex;
@@ -126,4 +133,21 @@
     height: auto;
     -webkit-user-drag: none;
     user-select: none;
+}
+.scale{
+    transform: scale(0.8);
+}
+
+.scale-up{
+    transform: scale(1.3);
+}
+
+.green{
+    width: 500px;
+    background-color: #9AC5B1;
+}
+
+.rose{
+    width: 500px;
+    background-color: #CEB5CA;
 }

@@ -5,36 +5,27 @@ import { red } from '@mui/material/colors';
 
 // Dati inventati
 const rows = [
-    { id: 1, assessmentName: 'Assessment A', networkName: 'Network X', date: '2025-01-25', status: 'Completed' },
-    { id: 2, assessmentName: 'Assessment B', networkName: 'Network Y', date: '2024-12-31', status: 'Pending' },
-    { id: 3, assessmentName: 'Assessment C', networkName: 'Network Z', date: '2025-04-03', status: 'In Progress' },
-    { id: 4, assessmentName: 'Assessment D', networkName: 'Network W', date: '2024-11-18', status: 'Completed' },
-    { id: 5, assessmentName: 'Assessment E', networkName: 'Network V', date: '2024-11-22', status: 'Pending' },
-    { id: 6, assessmentName: 'Assessment A', networkName: 'Network X', date: '2024-11-25', status: 'Completed' },
-    { id: 7, assessmentName: 'Assessment B', networkName: 'Network Y', date: '2024-11-20', status: 'Pending' },
-    { id: 8, assessmentName: 'Assessment C', networkName: 'Network Z', date: '2024-11-23', status: 'In Progress' },
-    { id: 9, assessmentName: 'Assessment D', networkName: 'Network W', date: '2024-11-18', status: 'Completed' },
-    { id: 10, assessmentName: 'Assessment E', networkName: 'Network V', date: '2024-11-22', status: 'Pending' },
-    { id: 11, assessmentName: 'Assessment A', networkName: 'Network X', date: '2024-11-25', status: 'Completed' },
-    { id: 12, assessmentName: 'Assessment B', networkName: 'Network Y', date: '2024-11-20', status: 'Pending' },
-    { id: 13, assessmentName: 'Assessment C', networkName: 'Network Z', date: '2024-11-23', status: 'In Progress' },
-    { id: 14, assessmentName: 'Assessment D', networkName: 'Network W', date: '2024-11-18', status: 'Completed' },
-    { id: 15, assessmentName: 'Assessment E', networkName: 'Network V', date: '2024-11-22', status: 'Pending' },
-    { id: 16, assessmentName: 'Assessment A', networkName: 'Network X', date: '2024-11-25', status: 'Completed' },
-    { id: 17, assessmentName: 'Assessment B', networkName: 'Network Y', date: '2024-11-20', status: 'Pending' },
-    { id: 18, assessmentName: 'Assessment C', networkName: 'Network Z', date: '2024-11-23', status: 'In Progress' },
-    { id: 19, assessmentName: 'Assessment D', networkName: 'Network W', date: '2024-11-18', status: 'Completed' },
-    { id: 20, assessmentName: 'Assessment E', networkName: 'Network V', date: '2024-11-22', status: 'Pending' },
-    { id: 21, assessmentName: 'Assessment A', networkName: 'Network X', date: '2024-11-25', status: 'Completed' },
-    { id: 22, assessmentName: 'Assessment B', networkName: 'Network Y', date: '2024-11-20', status: 'Pending' },
-    { id: 23, assessmentName: 'Assessment C', networkName: 'Network Z', date: '2024-11-23', status: 'In Progress' },
-    { id: 24, assessmentName: 'Assessment D', networkName: 'Network W', date: '2024-11-18', status: 'Completed' },
-    { id: 25, assessmentName: 'Assessment E', networkName: 'Network V', date: '2024-11-22', status: 'Pending' },
-    { id: 26, assessmentName: 'Assessment A', networkName: 'Network X', date: '2024-11-25', status: 'Completed' },
-    { id: 27, assessmentName: 'Assessment B', networkName: 'Network Y', date: '2024-11-20', status: 'Pending' },
-    { id: 28, assessmentName: 'Assessment C', networkName: 'Network Z', date: '2024-11-23', status: 'In Progress' },
-    { id: 29, assessmentName: 'Assessment D', networkName: 'Network W', date: '2024-11-18', status: 'Completed' },
-    { id: 30, assessmentName: 'Assessment E', networkName: 'Network V', date: '2024-11-22', status: 'Pending' },
+    { id: 1, assessmentName: 'Assessment A', networkName: 'Network 1', date: '2024-01-01', status: 'Da analizzare' },
+    { id: 2, assessmentName: 'Assessment B', networkName: 'Network 2', date: '2024-01-02', status: 'Controllo denominazione' },
+    { id: 3, assessmentName: 'Assessment C', networkName: 'Network 3', date: '2024-02-03', status: 'Creazione Report' },
+    { id: 4, assessmentName: 'Assessment D', networkName: 'Network 4', date: '2024-02-04', status: 'Completato' },
+    { id: 5, assessmentName: 'Assessment E', networkName: 'Network 5', date: '2024-03-05', status: 'Da analizzare' },
+    { id: 6, assessmentName: 'Assessment F', networkName: 'Network 6', date: '2024-03-06', status: 'Controllo denominazione' },
+    { id: 7, assessmentName: 'Assessment G', networkName: 'Network 7', date: '2024-04-07', status: 'Creazione Report' },
+    { id: 8, assessmentName: 'Assessment H', networkName: 'Network 8', date: '2024-04-08', status: 'Completato' },
+    { id: 9, assessmentName: 'Assessment I', networkName: 'Network 9', date: '2024-05-09', status: 'Da analizzare' },
+    { id: 10, assessmentName: 'Assessment L', networkName: 'Network 10', date: '2024-05-10', status: 'Controllo denominazione' },
+    { id: 11, assessmentName: 'Assessment M', networkName: 'Network 11', date: '2024-06-11', status: 'Creazione Report' },
+    { id: 12, assessmentName: 'Assessment N', networkName: 'Network 12', date: '2024-06-12', status: 'Completato' },
+    { id: 13, assessmentName: 'Assessment O', networkName: 'Network 13', date: '2024-07-13', status: 'Da analizzare' },
+    { id: 14, assessmentName: 'Assessment P', networkName: 'Network 14', date: '2024-07-14', status: 'Controllo denominazione' },
+    { id: 15, assessmentName: 'Assessment Q', networkName: 'Network 15', date: '2024-08-15', status: 'Creazione Report' },
+    { id: 16, assessmentName: 'Assessment R', networkName: 'Network 16', date: '2024-08-16', status: 'Completato' },
+    { id: 17, assessmentName: 'Assessment S', networkName: 'Network 17', date: '2024-09-17', status: 'Da analizzare' },
+    { id: 18, assessmentName: 'Assessment T', networkName: 'Network 18', date: '2024-09-18', status: 'Controllo denominazione' },
+    { id: 19, assessmentName: 'Assessment U', networkName: 'Network 19', date: '2024-10-22', status: 'Creazione Report' },
+    { id: 20, assessmentName: 'Assessment V', networkName: 'Network 20', date: '2024-11-24', status: 'Completato' },
+    { id: 21, assessmentName: 'Assessment Z', networkName: 'Network 21', date: '2024-12-25', status: 'Da analizzare' },
 ];
 
 // Colonne della tabella
@@ -64,7 +55,7 @@ const columns = [
 export default function TabAssessment({ handleSelection }) {
 
     return (
-        <Box sx={{ height: 600, width: 950 }}>
+        <Box sx={{ height: 600, width: 970 }}>
             <DataGrid
                 rows={rows}
                 columns={columns}

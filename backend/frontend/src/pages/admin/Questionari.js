@@ -54,7 +54,7 @@ export default function Questionari() {
 
     return (
         <Layout
-            title="[Name_ass]"
+            title="Assessment A"
             spallasx={<FasiAdmin status={[2, 1, 0]} />}
             main={
                 <div className="div-genitore">

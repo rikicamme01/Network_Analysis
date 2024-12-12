@@ -17,7 +17,7 @@ export default function ReportLoading() {
 
     return (
         <Layout
-            title="[Name_ass]"
+            title="Assessment A"
             spallasx={<FasiAdmin status={[2, 2, 1]} />}
             main={
                 <div className="div-genitore-load">
