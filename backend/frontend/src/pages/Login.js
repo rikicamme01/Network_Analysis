@@ -51,7 +51,7 @@ export default function Login() {
             if (username === 'admin') {
                 navigate("/newAss");
             } else if (username === 'analyzer') {
-                navigate("/analisi");
+                navigate("/databaseAss");
             } else {
                 console.log("Utente non autorizzato");
             }

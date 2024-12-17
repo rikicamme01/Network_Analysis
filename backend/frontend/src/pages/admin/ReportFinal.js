@@ -11,10 +11,10 @@ export default function ReportFinal() {
     const [showAlert, setShowAlert] = useState(false);
 
     const handleDownload = () => {
-        const fileUrl = '/files/example.pdf';       //file letto da DB
+        const fileUrl = '"http://localhost:8000/static/Report_user_RETI.pdf"';       //file letto da DB
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.download = 'NomeAss_report.pdf';
+        link.download = 'Report_Assessment_A.pdf';
         link.click();
 
         setShowAlert(true);
@@ -25,11 +25,11 @@ export default function ReportFinal() {
     }
 
     const handlePrenotaConsulenza = () => {
-        //const email = "destinatario@example.com";
-        const subject = encodeURIComponent("ogg"); // Codifica l'oggetto
-        const body = encodeURIComponent("Questo è il testo della mail preimpostata."); // Codifica il corpo della mail
+        const email = "ricerca@dialogica-lab.eu";
+        const subject = encodeURIComponent("Oggetto"); // Codifica l'oggetto
+        const body = encodeURIComponent("Questo è il testo della mail preimpostata per prenotare una consulenza."); // Codifica il corpo della mail
 
-        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+        const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
 
         window.location.href = mailtoLink;
 

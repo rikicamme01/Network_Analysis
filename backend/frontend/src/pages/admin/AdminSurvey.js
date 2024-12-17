@@ -15,7 +15,7 @@ import TextFieldMultiOptions from "../../components/TextFieldMultiOptions";
 
 
 //oggeto json extra creato da DB e passato per inizializzare valori responses
-const responsesDB = {
+/*const responsesDB = {
     tematica: "Sostenibilità",
     organizzazione: "prova 2",
     formaGiuridica: "prova 3",
@@ -30,9 +30,9 @@ const responsesDB = {
         operativo: 25,
     },
     grandezzaCampione: 0,
-};
+};*/
 
-/*const responsesDB = {
+const responsesDB = {
     tematica: "",
     organizzazione: "",
     formaGiuridica: "",
@@ -47,7 +47,7 @@ const responsesDB = {
         operativo: 0,
     },
     grandezzaCampione: 0,
-};*/
+};
 
 export default function AdminSurvey() {
     const [showAlert, setShowAlert] = useState(false);

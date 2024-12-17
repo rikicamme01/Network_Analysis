@@ -49,7 +49,7 @@ const columns = [
             return date //formatter.format(date, 'dd/MM/yyyy'); // Customize format as needed
         },
     },
-    { field: 'status', headerName: 'Status', width: 200, headerClassName: 'custom-header', },
+    { field: 'status', headerName: 'Status', width: 220, headerClassName: 'custom-header', },
 ];
 
 export default function TabAssessment({ handleSelection }) {

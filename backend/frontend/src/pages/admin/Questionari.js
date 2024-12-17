@@ -35,8 +35,13 @@ export default function Questionari() {
 
     const handleShare = () => {
         //const email = "destinatario@example.com";
-        const subject = encodeURIComponent("ogg"); // Codifica l'oggetto
-        const body = encodeURIComponent("Questo è il testo della mail preimpostata."); // Codifica il corpo della mail
+        const subject = encodeURIComponent("Oggetto"); // Codifica l'oggetto
+        const body = encodeURIComponent(
+            `Carissimi,\n\nvi invitiamo a partecipare a un’indagine interna rispondendo al questionario disponibile al seguente\nlink: [inserire link].\n\nIl questionario, parte dello strumento Network Cohesion Index, è progettato per rilevare il grado di coesione rispetto a [specificare tematica]. A partire dai dati emersi grazie al vostro contributo, potremo tracciare traiettorie di sviluppo della nostra organizzazione che partano dalle nostre esigenze.\nL’indagine è rivolta a ruoli diversi, così da raccogliere prospettive molteplici e offrire una visione dinamica e multidimensionale sul tema.\n\nIl questionario è anonimo e contiene domande sia aperte che chiuse. I dati saranno trattati nel rispetto delle normative sulla privacy (Dlgs.n.101/2018).\n\n
+Per qualsiasi domanda relativa all’indagine, potete contattare ricerca@dialogica-lab.eu, il team di ricerca sarà lieto di rispondere.\n\n
+Grazie per la collaborazione!\n\n
+Un caro saluto.`
+        );
 
         const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
 

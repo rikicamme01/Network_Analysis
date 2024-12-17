@@ -40,7 +40,7 @@ export default function MainAnalisiQuestionari() {
     };
 
     const handleScaricaDataset = () => {
-        const fileUrl = '';       //file letto da DB
+        const fileUrl = 'http://localhost:8000/static/test.xlsx';       //file letto da DB
         ///Users/riccardo/Desktop/Network_Analysis/Network_Analysis/backend/frontend/src/components/test.xlsx
 
         const currentDate = new Date();
