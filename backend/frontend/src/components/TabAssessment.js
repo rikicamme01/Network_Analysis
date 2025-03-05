@@ -5,8 +5,8 @@ import { red } from '@mui/material/colors';
 
 // Dati inventati
 const rows = [
-    { id: 1, assessmentName: 'Assessment A', networkName: 'Network 1', date: '2024-01-01', status: 'Da analizzare' },
-    { id: 2, assessmentName: 'Assessment B', networkName: 'Network 2', date: '2024-01-02', status: 'Controllo denominazione' },
+    { id: 1, assessmentName: 'Assessment X', networkName: 'Rete per le politiche giovanili dell’ambito sociale territoriale X', date: '2024-01-01', status: 'Da analizzare' },
+    /*{ id: 2, assessmentName: 'Assessment B', networkName: 'Network 2', date: '2024-01-02', status: 'Controllo denominazione' },
     { id: 3, assessmentName: 'Assessment C', networkName: 'Network 3', date: '2024-02-03', status: 'Creazione Report' },
     { id: 4, assessmentName: 'Assessment D', networkName: 'Network 4', date: '2024-02-04', status: 'Completato' },
     { id: 5, assessmentName: 'Assessment E', networkName: 'Network 5', date: '2024-03-05', status: 'Da analizzare' },
@@ -26,6 +26,7 @@ const rows = [
     { id: 19, assessmentName: 'Assessment U', networkName: 'Network 19', date: '2024-10-22', status: 'Creazione Report' },
     { id: 20, assessmentName: 'Assessment V', networkName: 'Network 20', date: '2024-11-24', status: 'Completato' },
     { id: 21, assessmentName: 'Assessment Z', networkName: 'Network 21', date: '2024-12-25', status: 'Da analizzare' },
+    */
 ];
 
 // Colonne della tabella

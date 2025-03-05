@@ -45,7 +45,7 @@ export default function Dashboard() {
 
     return (
         <Layout
-            title="Assessment A"
+            title="Assessment X"
             spallasx={<NastedListMenu selectedIndex={selectedIndex} handleListItemClick={handleListItemClick}></NastedListMenu>} //da aggiungere pulsante indietro
             main={content}
 

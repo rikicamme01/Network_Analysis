@@ -8,10 +8,10 @@ import "../../../static/css/newAss.css";
 export default function NewAss() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        assessmentName: "",
-        enteName: "",
-        adminName: "",
-        adminEmail: "",
+        assessmentName: "Assessment X",
+        enteName: "Rete per le politiche giovanili dell’ambito sociale territoriale X",
+        adminName: "Mario Rossi",
+        adminEmail: "mariorossi@gmail.com",
     });
 
     const [formErrors, setFormErrors] = useState({});

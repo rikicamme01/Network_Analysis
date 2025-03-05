@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import Layout from "../../components/Layout";
 import FasiAdmin from "../../components/FasiAdmin";
 import TabStatus from "../../components/TabStatus";
+import TabStatus100 from "../../components/TabStatus100";
 import CustomButton from "../../components/CustomButton";
 import loadingAnimation from "../../../static/img/Animation - 1733397016244.json";
 
@@ -14,10 +15,18 @@ export default function ReportLoading() {
     const handleForward = () => {
         navigate("/reportFinal")
     };
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate("/reportFinal");
+        }, 10000); // 10 secondi (10000 ms)
+
+        // Pulizia del timer se il componente viene smontato
+        return () => clearTimeout(timer);
+    }, [navigate]);
 
     return (
         <Layout
-            title="Assessment A"
+            title="Assessment X"
             spallasx={<FasiAdmin status={[2, 2, 1]} />}
             main={
                 <div className="div-genitore-load">
@@ -30,19 +39,22 @@ export default function ReportLoading() {
                         <Lottie className="gif" animationData={loadingAnimation} style={{ width: 400, height: 400 }} />
                     </div>
                     <div className="div-tab-status">
-                        <TabStatus time='4' />
+                        <TabStatus100 time='7' />
                     </div>
-                    <div>
-                        <CustomButton
-                            text="avanti"
-                            onClick={handleForward}
-                            style={{marginTop:"40px"}}
-                        />
 
-                    </div>
                 </div>
             }
         />
 
     );
 }
+/*
+<div>
+                        <CustomButton
+                            text="avanti"
+                            onClick={handleForward}
+                            style={{ marginTop: "40px" }}
+                        />
+
+                    </div>
+*/

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 import FasiAdmin from "../../components/FasiAdmin";
@@ -56,10 +56,20 @@ Un caro saluto.`
         navigate("/reportLoading")
     };
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate("/reportLoading");
+        }, 10000);
+
+        // Pulizia del timer se il componente viene smontato
+        return () => clearTimeout(timer);
+    }, [navigate]);
+
+
 
     return (
         <Layout
-            title="Assessment A"
+            title="Assessment X"
             spallasx={<FasiAdmin status={[2, 1, 0]} />}
             main={
                 <div className="div-genitore">
@@ -89,15 +99,19 @@ Un caro saluto.`
                         <TabStatus time='4' />
 
                     </div>
-                    <div>
+
+                </div>
+            }
+        />
+    );
+}
+
+/**
+ *  <div>
                         <CustomButton
                             text="avanti"
                             onClick={handleForward}
                         />
 
                     </div>
-                </div>
-            }
-        />
-    );
-}
+ */

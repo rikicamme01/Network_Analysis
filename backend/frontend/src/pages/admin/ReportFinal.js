@@ -11,10 +11,10 @@ export default function ReportFinal() {
     const [showAlert, setShowAlert] = useState(false);
 
     const handleDownload = () => {
-        const fileUrl = '"http://localhost:8000/static/Report_user_RETI.pdf"';       //file letto da DB
+        const fileUrl = 'http://localhost:8000/static/Report_user_RETI.pdf';       //file letto da DB
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.download = 'Report_Assessment_A.pdf';
+        link.download = 'Report_Assessment_Good_Times.pdf';
         link.click();
 
         setShowAlert(true);
@@ -39,7 +39,7 @@ export default function ReportFinal() {
     }
     return (
         <Layout
-            title="Assessment A"
+            title="Assessment X"
             spallasx={<FasiAdmin status={[2, 2, 2]} />}
             main={
                 <div className="div-genitore-report">

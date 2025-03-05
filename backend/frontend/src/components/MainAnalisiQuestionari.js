@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../static/css/analisiQuestionari.css"
 import TabRisultati from "./TabRisultati";
 import TabStatus from "./TabStatus";
+import TabStatus100 from "./TabStatus100";
 import CustomButton from "./CustomButton";
 import CircularProgress from "./CircularProgress";
 import CustomAlert from "./CustomAlert";
@@ -40,12 +41,12 @@ export default function MainAnalisiQuestionari() {
     };
 
     const handleScaricaDataset = () => {
-        const fileUrl = 'http://localhost:8000/static/test.xlsx';       //file letto da DB
+        const fileUrl = 'http://localhost:8000/static/Dataset_Assessment_X.xlsx';       //file letto da DB
         ///Users/riccardo/Desktop/Network_Analysis/Network_Analysis/backend/frontend/src/components/test.xlsx
 
         const currentDate = new Date();
         const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}_${String(currentDate.getMonth() + 1).padStart(2, '0')}_${String(currentDate.getFullYear()).slice(-2)}`;
-        const fileName = `dataset_Assessment_A_${formattedDate}.xlsx`;
+        const fileName = `Dataset_Assessment_X_${formattedDate}.xlsx`;
 
         const link = document.createElement('a');
         link.href = fileUrl;
@@ -71,7 +72,7 @@ export default function MainAnalisiQuestionari() {
         <div className="frame">
             <div className="row1">
                 <div className="row1-table">
-                    <TabStatus time='4' ></TabStatus>
+                    <TabStatus100 time='7' ></TabStatus100>
                 </div>
                 <div className="row1-dx">
                     <div className="div-button-analisi">

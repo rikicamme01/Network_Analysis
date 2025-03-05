@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "../pages/Login";
 import NewAss from "../pages/admin/NewAss";
-import AdminSurvey from "../pages/admin/AdminSurvey";
+import AdminSurvey from "../pages/admin/AdminSurvey_org";
+import AdminSurvey_net from "../pages/admin/AdminSurvey_net";
 import Questionari from "../pages/admin/Questionari";
 import ReportLoading from "../pages/admin/ReportLoading";
 import ReportFinal from "../pages/admin/ReportFinal";
@@ -20,7 +21,7 @@ export default function App(props) {
                     <Route path="/" element={<Login />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/newAss" element={<NewAss />} />
-                    <Route path="/adminSurvey" element={<AdminSurvey />} />
+                    <Route path="/adminSurvey" element={<AdminSurvey_net />} />
                     <Route path="/questionari" element={<Questionari />} />
                     <Route path="/reportLoading" element={<ReportLoading />} />
                     <Route path="/reportFinal" element={<ReportFinal />} />
