@@ -13,7 +13,7 @@ import "../../../static/css/mainGraph.css"
 
 export default function Dashboard() {
     const [selectedIndex, setSelectedIndex] = useState(1);
-    const [content, setContent] = useState(<MainAnalisiQuestionari />);
+    const [content, setContent] = useState(<MainAnalisiQuestionari />); //MainAnalisiQuestionari
 
 
 

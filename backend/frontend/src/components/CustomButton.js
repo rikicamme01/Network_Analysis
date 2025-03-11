@@ -14,7 +14,8 @@ export default function CustomButton(props) {
                 padding: '10px 20px', // Imposta la dimensione del padding (spaziatura interna)
                 borderRadius: '8px', // Rende gli angoli arrotondati
                 textTransform: 'none', // Disabilita la trasformazione del testo (in genere tutto in maiuscolo)
-                backgroundColor: '#22509C', // Colore di sfondo personalizzato
+                backgroundColor: props.backgroundColor || '#22509C', // Colore di sfondo personalizzato
+                color: props.color || '#F6F6F6',
                 '&:hover': { // Stile per il bottone al passaggio del mouse (hover)
                     backgroundColor: '#A9C4EB',
                     color: 'black',

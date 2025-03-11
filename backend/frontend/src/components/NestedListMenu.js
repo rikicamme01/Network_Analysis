@@ -36,7 +36,7 @@ export default function NestedList({ handleListItemClick, selectedIndex }) {
             text: "Dashboard grafici",
             icon: <BarChartIcon />,
             isExpandable: true,
-            isDisabled: !output,
+            isDisabled: !output, //!output
         },
         {
             id: 3,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TabFrequenza from "../../components/mainGrafici/TabFrequenza"
-import CustomButton from "../CustomButton";
+import Filter_graph from "./Filter_graph";
+
 
 const headers_gruppo = [
     { key: 'classe', label: 'Classe', align: 'left' },
@@ -56,17 +57,15 @@ const rows_AdS = [
 
 export default function DistribuzioneRD() {
 
+
     return (
         <div className="div-genitore-graph">
-            <div className="div-title-graph">
-                <div>
+            <div className="div-first-row-graph">
+                <div className="div-title-graph">
                     <p className="title-graph">Distribuzione Repertori Discorsivi</p>
                 </div>
-                <div className="div-filtro">
-                    <CustomButton
-                        text="Filtro"
-                        width="120px"
-                    />
+                <div >
+                    <Filter_graph/>
                 </div>
             </div>
             <div className="div-subtitle-graph">
