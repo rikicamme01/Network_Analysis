@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import { Box, Tooltip } from '@mui/material';
 import { DataGrid, GridToolbar, itIT, esES, DateTimeFormatter } from '@mui/x-data-grid';
 import { red } from '@mui/material/colors';
 
 // Dati inventati
 const rows = [
     { id: 1, assessmentName: 'Assessment X', networkName: 'Rete per le politiche giovanili dell’ambito sociale territoriale X', date: '2024-01-01', status: 'Da analizzare' },
-    /*{ id: 2, assessmentName: 'Assessment B', networkName: 'Network 2', date: '2024-01-02', status: 'Controllo denominazione' },
+    { id: 2, assessmentName: 'Assessment B', networkName: 'Network 2', date: '2024-01-02', status: 'Controllo denominazione' },
     { id: 3, assessmentName: 'Assessment C', networkName: 'Network 3', date: '2024-02-03', status: 'Creazione Report' },
     { id: 4, assessmentName: 'Assessment D', networkName: 'Network 4', date: '2024-02-04', status: 'Completato' },
     { id: 5, assessmentName: 'Assessment E', networkName: 'Network 5', date: '2024-03-05', status: 'Da analizzare' },
@@ -26,18 +26,18 @@ const rows = [
     { id: 19, assessmentName: 'Assessment U', networkName: 'Network 19', date: '2024-10-22', status: 'Creazione Report' },
     { id: 20, assessmentName: 'Assessment V', networkName: 'Network 20', date: '2024-11-24', status: 'Completato' },
     { id: 21, assessmentName: 'Assessment Z', networkName: 'Network 21', date: '2024-12-25', status: 'Da analizzare' },
-    */
+    
 ];
 
 // Colonne della tabella
 const columns = [
-    { field: 'id', headerName: 'Index', width: 100, headerClassName: 'custom-header' },
-    { field: 'assessmentName', headerName: 'Nome Assessment', width: 250, headerClassName: 'custom-header' },
-    { field: 'networkName', headerName: 'Nome Rete', width: 250, headerClassName: 'custom-header' },
+    { field: 'id', headerName: 'Index', width: 80, headerClassName: 'custom-header' },
+    { field: 'assessmentName', headerName: 'Nome Assessment', width: 280, headerClassName: 'custom-header' },
+    { field: 'networkName', headerName: 'Nome Rete', flex:1, headerClassName: 'custom-header', },
     {
         field: 'date',
         headerName: 'Data',
-        width: 150,
+        width: 120,
         type: 'date',
         headerClassName: 'custom-header',
         valueFormatter: (params) => {
@@ -56,7 +56,7 @@ const columns = [
 export default function TabAssessment({ handleSelection }) {
 
     return (
-        <Box sx={{ height: 600, width: 970 }}>
+        <Box sx={{ height: 610, width: 1000 }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -94,6 +94,9 @@ export default function TabAssessment({ handleSelection }) {
                         fontFamily: 'Roboto, sans-serif',
                         fontSize: '17px',
                         //backgroundColor: '#22509c'
+                    },
+                    '& .MuiDataGrid-columnHeaders': {
+                        backgroundColor: '#22509C',
                     },
                     '& .MuiDataGrid-row:hover': {
                         backgroundColor: '#A9C4EB', // Colore di sfondo al passaggio del mouse

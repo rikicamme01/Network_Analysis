@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TabFrequenza from "../../components/mainGrafici/TabFrequenza"
-import CustomButton from "../CustomButton";
+import Filter_graph from "./Filter_graph";
 
 
 const headers_RDRD = [
@@ -92,15 +92,12 @@ export default function LegamiRD() {
 
     return (
         <div className="div-genitore-graph">
-            <div className="div-title-graph">
-                <div>
+            <div className="div-first-row-graph">
+                <div className="div-title-graph">
                     <p className="title-graph">Legami fra Repertori Discorsivi</p>
                 </div>
-                <div className="div-filtro">
-                    <CustomButton
-                        text="Filtro"
-                        width="120px"
-                    />
+                <div className="div-filtro-parents">
+                    <Filter_graph />
                 </div>
             </div>
             <div className="div-subtitle-graph">

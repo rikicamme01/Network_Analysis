@@ -9,7 +9,7 @@ import ReportLoading from "../pages/admin/ReportLoading";
 import ReportFinal from "../pages/admin/ReportFinal";
 import Dashboard from "../pages/analyzer/Dashboard";
 import DatabaseAss from "../pages/analyzer/DatabaseAss";
-import DistribuzioneRD from "./mainGrafici/DistribuzioneRD";
+import DistribuzcioneRD from "./mainGrafici/DistribuzioneRD";
 import DistribuzioneAdS from "./mainGrafici/DistribuzioneAdS";
 import { OutputProvider } from "./Context";
 import "../../static/css/style.css"
@@ -19,7 +19,7 @@ export default function App(props) {
         <OutputProvider>
             <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true, }}>
                 <Routes>
-                    <Route path="/" element={< Dashboard/>} />
+                    <Route path="/" element={< Dashboard />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/newAss" element={<NewAss />} />
                     <Route path="/adminSurvey" element={<AdminSurvey_net />} />

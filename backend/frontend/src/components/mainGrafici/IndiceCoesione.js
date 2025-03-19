@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
-import TabFrequenza from "../../components/mainGrafici/TabFrequenza"
-import CustomButton from "../CustomButton";
+import Filter_graph from "./Filter_graph";
 
 export default function IndiceCoesione() {
 
     return (
         <div className="div-genitore-graph">
-            <div className="div-title-graph">
-                <div>
+            <div className="div-first-row-graph">
+                <div className="div-title-graph">
                     <p className="title-graph">Indice di coesione</p>
                 </div>
-                <div className="div-filtro">
-                    <CustomButton
-                        text="Filtro"
-                        width="120px"
-                    />
+                <div className="div-filtro-parents">
+                    <Filter_graph />
                 </div>
             </div>
             <div className="div-tab-graph">

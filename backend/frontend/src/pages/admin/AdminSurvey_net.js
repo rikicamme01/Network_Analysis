@@ -43,13 +43,13 @@ const responsesDB = {
     copertura: "22 comuni dell’ambito sociale Territoriale X",
     progettiConclusi: ["Progetto 1", "Progetto 2", "Progetto 3", "Progetto 4", "Progetto 5", "Progetto 6", "Progetto 7"],
     progettiInCorso: ["Progetto 8", "Progetto 9", "Progetto 10", "Progetto 11",],
-    numEnti: 16,
+    numEnti: '16',
     numeroRuoli: {
-        gestionale: 5,
-        decisionale: 4,
-        operativo: 6,
+        gestionale: '5',
+        decisionale: '4',
+        operativo: '6',
     },
-    grandezzaCampione: 252,
+    grandezzaCampione: '252',
 };
 
 /*const responsesDB = {
@@ -102,40 +102,61 @@ export default function AdminSurvey() {
         setButtonDisable(true)
 
         setShowAlert(true);
+
         setTimeout(() => {                  //simula salvataggio su DB
             setShowAlert(false);
         }, 3000);
-        if (progress === 100) {
-            //browser alert
-            const userConfirmed = window.confirm("Hai completato il 100% della pre-survey. Vuoi continuare?");
-            if (userConfirmed) {
-                navigate("/questionari"); // Naviga alla nuova pagina
-            }
 
+        if (progress === 100) {
+            // Aspetta un attimo per lasciare che React aggiorni il DOM
+            setTimeout(() => {
+                const userConfirmed = window.confirm("Hai completato il 100% della pre-survey. Vuoi continuare?");
+                if (userConfirmed) {
+                    navigate("/questionari");
+                }
+            }, 200); // Un piccolo ritardo di 100ms può aiutare a evitare il blocco del rendering
         }
     }
 
     const getProgressColor = (value) => {
         if (value < 50) return "#dc143c"; // Rosso
-        if (value <= 90) return "#F7A714"; // Arancione
-        return "#5BC69A"; // Verde
+        if (value == 100) return "#5BC69A"; // Verde 
+        return "#F7A714";// Arancione
     };
 
     useEffect(() => {
         // Calcolo del progresso
-        const totalFields = 10; // Numero totale di domande
+        const totalFields = 11; // Numero totale di domande
         let filledFields = 0;
 
-        if (responses.tematica) filledFields++;
-        if (responses.ambiti) filledFields++;
-        if (responses.obiettivo) filledFields++;
+        const isValidNumber = (num) => {
+            if (!/^\d+$/.test(num))
+                return false;
+            if (num.startsWith('0') && num.length > 1)
+                return false;
+            return true;
+        };
+
+        const isValidText = (text) => {
+            if (!text.trim()) return false;
+            // Controlla che non contenga tag HTML o script malevoli
+            const unsafePatterns = /<[^>]*script|SELECT\s.*\sFROM|INSERT\sINTO|DROP\sTABLE|--|\/\*|\*\/|['";]/i;
+            if (unsafePatterns.test(text))
+                return false;
+            return true;
+        };
+
+        if (isValidText(responses.tematica)) filledFields++;
+        if (isValidText(responses.ambiti)) filledFields++;
+        if (isValidText(responses.obiettivo)) filledFields++;
         if (responses.tipoAttivita.length > 0) filledFields++;
         if (responses.enti.length > 0) filledFields++;
+        if (isValidText(responses.copertura)) filledFields++;
         if (responses.progettiConclusi.length > 0) filledFields++;
         if (responses.progettiInCorso.length > 0) filledFields++;
-        if (responses.numEnti > 0) filledFields++;
-        if (responses.numeroRuoli.gestionale > 0 && responses.numeroRuoli.decisionale > 0 && responses.numeroRuoli.operativo > 0) filledFields++;
-        if (responses.grandezzaCampione > 0) filledFields++;
+        if (isValidNumber(responses.numEnti)) filledFields++;
+        if (isValidNumber(responses.numeroRuoli.gestionale) && isValidNumber(responses.numeroRuoli.decisionale) && isValidNumber(responses.numeroRuoli.operativo)) filledFields++;
+        if (isValidNumber(responses.grandezzaCampione)) filledFields++;
 
         setProgress(Math.round((filledFields / totalFields) * 100));
     }, [responses]);
@@ -263,7 +284,6 @@ export default function AdminSurvey() {
                                             onChange={(e) => handleRuoloChange("operativo", e.target.value)}
                                             value={responses.numeroRuoli.operativo}
                                         />
-
                                     </div>
                                 </div>
                             </div>

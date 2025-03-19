@@ -5,35 +5,39 @@ import Typography from '@mui/material/Typography';
 
 import CustomButton from "../CustomButton";
 
+
+const roles = {
+    option1: false,
+    option2: false,
+    option3: false,
+    option4: false,
+}
+
+const gender = {
+    uomo: false,
+    donna: false,
+    altro: false,
+}
 export default function Filter_graph(ruoli) {
 
-    const [selectedRole, setSelectedRole] = useState({
-        option1: false,
-        option2: false,
-        option3: false,
-        option4: false,
-    });
-    const [selectedGender, setSelectedGender] = useState({
-        uomo: false,
-        donna: false,
-        altro: false,
-    });
-    const [selectedAge, setSelectedAge] = useState({
 
-    });
+    const [selectedRole, setSelectedRole] = useState({ roles });
+    const [selectedGender, setSelectedGender] = useState({ gender });
+    const [isFilterModified, setIsFilterModified] = useState(false);
 
 
-    const handleChange = (event) => {
+    const handleChangeRole = (event) => {
+        setIsFilterModified(true)
         setSelectedRole({
             ...selectedRole,
             [event.target.name]: event.target.checked,
         });
+    };
+
+    const handleChangeGender = (event) => {
+        setIsFilterModified(true)
         setSelectedGender({
             ...selectedGender,
-            [event.target.name]: event.target.checked,
-        });
-        setSelectedAge({
-            ...selectedAge,
             [event.target.name]: event.target.checked,
         });
     };
@@ -53,7 +57,19 @@ export default function Filter_graph(ruoli) {
     // Stato per i valori selezionati
     const [age, setAge] = useState([18, 80]);
     const handleChangeAge = (event, newValue) => {
+        setIsFilterModified(true)
         setAge(newValue);
+    };
+
+    const handleFiltra = () => {
+        setIsFilterModified(false)
+        const filters = {
+            ...selectedRole,
+            ...selectedGender,
+            minAge: age[0],
+            maxAge: age[1],
+        };
+        console.log(filters);
     };
 
 
@@ -71,7 +87,7 @@ export default function Filter_graph(ruoli) {
                                 control={
                                     <Checkbox
                                         checked={selectedRole.option1}
-                                        onChange={handleChange}
+                                        onChange={handleChangeRole}
                                         name="option1"
                                         sx={{
                                             transform: "scale(0.8)",
@@ -87,7 +103,7 @@ export default function Filter_graph(ruoli) {
                                 control={
                                     <Checkbox
                                         checked={selectedRole.option2}
-                                        onChange={handleChange}
+                                        onChange={handleChangeRole}
                                         name="option2"
                                         sx={{
                                             transform: "scale(0.8)",
@@ -103,7 +119,7 @@ export default function Filter_graph(ruoli) {
                                 control={
                                     <Checkbox
                                         checked={selectedRole.option3}
-                                        onChange={handleChange}
+                                        onChange={handleChangeRole}
                                         name="option3"
                                         sx={{
                                             transform: "scale(0.8)",
@@ -119,7 +135,7 @@ export default function Filter_graph(ruoli) {
                                 control={
                                     <Checkbox
                                         checked={selectedRole.option4}
-                                        onChange={handleChange}
+                                        onChange={handleChangeRole}
                                         name="option4"
                                         sx={{
                                             transform: "scale(0.8)",
@@ -145,9 +161,9 @@ export default function Filter_graph(ruoli) {
                 </div>
                 <div className="div-selector">
                     <FormControl component="fieldset">
-                        <FormGroup row sx={{ gap: 0 }}> {/* Aggiunge spaziatura tra gli elementi */}
+                        <FormGroup row sx={{ gap: 0 }}>
                             <FormControlLabel
-                                control={<Checkbox checked={selectedGender.option1} onChange={handleChange} name="uomo" sx={{
+                                control={<Checkbox checked={selectedGender.option1} onChange={handleChangeGender} name="uomo" sx={{
                                     transform: "scale(0.8)", color: "grey",
                                     "&.Mui-checked": { color: "#22509C" }
                                 }} />}
@@ -155,7 +171,7 @@ export default function Filter_graph(ruoli) {
                                 sx={{ "& .MuiTypography-root": { fontSize: "15px", fontFamily: "'Roboto', sans-serif" } }}
                             />
                             <FormControlLabel
-                                control={<Checkbox checked={selectedGender.option1} onChange={handleChange} name="donna" sx={{
+                                control={<Checkbox checked={selectedGender.option1} onChange={handleChangeGender} name="donna" sx={{
                                     transform: "scale(0.8)", color: "grey",
                                     "&.Mui-checked": { color: "#22509C" }
                                 }} />}
@@ -163,7 +179,7 @@ export default function Filter_graph(ruoli) {
                                 sx={{ "& .MuiTypography-root": { fontSize: "15px", fontFamily: "'Roboto', sans-serif" } }}
                             />
                             <FormControlLabel
-                                control={<Checkbox checked={selectedGender.option1} onChange={handleChange} name="altro" sx={{
+                                control={<Checkbox checked={selectedGender.option1} onChange={handleChangeGender} name="altro" sx={{
                                     transform: "scale(0.8)", color: "grey",
                                     "&.Mui-checked": { color: "#22509C" }
                                 }} />}
@@ -205,16 +221,18 @@ export default function Filter_graph(ruoli) {
                         valueLabelDisplay="off"
                     />
                 </div>
+                <div className="row-filtro-filtra">
+                    <CustomButton
 
+                        text='Filtra'
+                        fontSize='16px'
+                        height='38px'
+                        onClick={handleFiltra}
+                        disabled={!isFilterModified}
+                    />
+                </div>
             </div>
-            <div className="row-filtro-filtra">
-                <CustomButton
 
-                    text='Filtra'
-                    fontSize='16px'
-                    height='38px'
-                />
-            </div>
         </div>
     )
 }

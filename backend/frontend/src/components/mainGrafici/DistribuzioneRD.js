@@ -64,7 +64,7 @@ export default function DistribuzioneRD() {
                 <div className="div-title-graph">
                     <p className="title-graph">Distribuzione Repertori Discorsivi</p>
                 </div>
-                <div >
+                <div className="div-filtro-parents">
                     <Filter_graph/>
                 </div>
             </div>
