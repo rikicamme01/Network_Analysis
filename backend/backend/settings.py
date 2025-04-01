@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'api.apps.ApiConfig',
     'rest_framework',
-    'frontend.apps.FrontendConfig'
+    'frontend.apps.FrontendConfig',
+    "db_manager",
 ]
 
 MIDDLEWARE = [
@@ -75,13 +76,9 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+MONGO_DB_NAME = "Test_mongo"
+MONGO_URI = "mongodb+srv://atalsAdmin:EkCV81Rk8GzOsqn5@cluster0.pzcthqu.mongodb.net/"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
 
 
 # Password validation

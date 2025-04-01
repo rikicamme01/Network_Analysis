@@ -10,6 +10,7 @@ import CustomButton from "../components/CustomButton";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import "../../static/css/login.css";
+import AxiosInstance from "../components/Axios";
 
 export default function Login() {
 
@@ -23,6 +24,17 @@ export default function Login() {
     /*const togglePasswordVisibility = () => {
         setShowPassword((prev) => !prev); // Inverte lo stato di visibilità
     };*/
+    const add_user = async (email, password) => {
+        try {
+            const response = await AxiosInstance.post('/db_manager/add_user/', {
+                email: email,
+                password: password
+            });
+            alert(response.data.message);  // Mostra il messaggio di successo
+        } catch (error) {
+            alert(error.response?.data?.error || "An error occurred");  // Mostra l'errore
+        }
+    };
 
     const handleLogin = () => {
 
@@ -45,6 +57,9 @@ export default function Login() {
         const loginData = { username, password };
         const isAuthenticated = true;
         console.log("Dati di login:", loginData);
+        add_user(username, password);
+
+
 
         //(thread 2) Abilita collegamento a /newAss
         if (isAuthenticated) {

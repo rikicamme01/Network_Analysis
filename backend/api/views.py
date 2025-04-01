@@ -15,3 +15,4 @@ class CreateNetView(APIView):
 
     def post(self, request, format=None):
         pass
+

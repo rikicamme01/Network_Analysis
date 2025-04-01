@@ -4,8 +4,6 @@ from .graph.distribuzioneRD import pie_chart_RD
 from .graph.preparazioneDataset import prepareDf
 from .graph.serializer import convert_ndarray
 
-client =MongoClient('connection_string')
-db = client['db_name']
 
 def get_pie_chart_RD(request):
     try:
