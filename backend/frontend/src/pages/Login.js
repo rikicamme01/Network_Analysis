@@ -10,7 +10,7 @@ import CustomButton from "../components/CustomButton";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import "../../static/css/login.css";
-import AxiosInstance from "../components/Axios";
+import AxiosInstance from "../Axios";
 
 export default function Login() {
 
@@ -26,11 +26,11 @@ export default function Login() {
     };*/
     const add_user = async (email, password) => {
         try {
-            const response = await AxiosInstance.post('/db_manager/add_user/', {
+            const response = await AxiosInstance.post('/api/add_user/', {
                 email: email,
                 password: password
             });
-            alert(response.data.message);  // Mostra il messaggio di successo
+            //alert(response.data.message); 
         } catch (error) {
             alert(error.response?.data?.error || "An error occurred");  // Mostra l'errore
         }
