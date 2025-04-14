@@ -22,7 +22,8 @@ export default function App(props) {
                     <Route path="/" element={< Login />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/newAss" element={<NewAss />} />
-                    <Route path="/adminSurvey" element={<AdminSurvey_net />} />
+                    <Route path="/adminSurvey_org" element={<AdminSurvey_org />} />
+                    <Route path="/adminSurvey_net" element={<AdminSurvey_net />} />
                     <Route path="/questionari" element={<Questionari />} />
                     <Route path="/reportLoading" element={<ReportLoading />} />
                     <Route path="/reportFinal" element={<ReportFinal />} />

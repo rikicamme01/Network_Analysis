@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 import CustomTextField from "../../components/CustomTextField";
 import CustomButton from "../../components/CustomButton";
+import AxiosInstance from './Axios';
 import "../../../static/css/newAss.css";
 
 export default function NewAss() {
@@ -38,13 +39,44 @@ export default function NewAss() {
         setFormErrors(errors);
         return Object.keys(errors).length === 0; // Restituisce `true` se non ci sono errori
     };
+    const sendAssessment = async (data) => {
+        try {
+            const response = await AxiosInstance.post('/api/set_assessment/', {
+                assessmentName: data.assessmentName,
+                enteName: data.enteName,
+                adminName: data.adminName,
+                adminEmail: data.adminEmail,
+            });
+            //alert(response.data.message);
+        } catch (error) {
+            alert(error.response?.data?.error || "Errore durante il salvataggio");
+        }
+    };
 
+    const handle_navigation = async () => {
+        try {
+            const response = await AxiosInstance.get('/api/get_typeAss/');
+            const type = response.data.typeAss;
+
+            if (type === 'org') return "/adminSurvey_org";
+            else if (type === 'net') return "/adminSurvey_net";
+            else throw new Error("Tipo di assessment sconosciuto");
+        } catch (error) {
+            alert(error.response?.data?.error || "Errore durante la lettura del typeAss");
+            return null; // o puoi gestirlo in altro modo
+        }
+    };
     // Gestione del submit
-    const handleSubmit = () => {
+    const handleSubmit = async() => {
         if (validateForm()) {
             console.log("Form data:", formData);
             // Qui puoi inviare i dati al server o procedere con l'azione successiva
-            navigate("/adminSurvey");
+            sendAssessment(formData);
+            //per navigare verso la pre survey giusta bisogna leggere il type assessment [net o org]
+            const route = await handle_navigation();
+            if (route) {
+                navigate(route);
+            }
         }
     };
 

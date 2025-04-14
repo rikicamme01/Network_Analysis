@@ -24,6 +24,7 @@ export default function Login() {
     /*const togglePasswordVisibility = () => {
         setShowPassword((prev) => !prev); // Inverte lo stato di visibilità
     };*/
+    /*
     const add_user = async (email, password) => {
         try {
             const response = await AxiosInstance.post('/api/add_user/', {
@@ -35,6 +36,7 @@ export default function Login() {
             alert(error.response?.data?.error || "An error occurred");  // Mostra l'errore
         }
     };
+    */
 
     const handleLogin = () => {
 
@@ -57,7 +59,7 @@ export default function Login() {
         const loginData = { username, password };
         const isAuthenticated = true;
         console.log("Dati di login:", loginData);
-        add_user(username, password);
+        //add_user(username, password);
 
 
 
