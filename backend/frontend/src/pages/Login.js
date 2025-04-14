@@ -37,8 +37,24 @@ export default function Login() {
         }
     };
     */
+    const readingStatusIndagine = async () => {
+        try {
+            const response = await AxiosInstance.get('/api/get_statusIndagine/');
+            const status = response.data.statusIndagine;
 
-    const handleLogin = () => {
+            if (status === 0) return "/newAss";
+            else if (status === 1) return "/newAss";
+            else if (status === 2) return "/newAss";
+            else if (status === 3) return "/newAss";
+            else if (status === 4) return "/newAss";
+            else throw new Error("Status indagine sconosciuto");
+        } catch (error) {
+            alert(error.response?.data?.error || "Errore durante la lettura del statusIndagine");
+            return null; // o puoi gestirlo in altro modo
+        }
+    };
+
+    const handleLogin = async () => {
 
         setPasswordError(false);
         setUsernameError(false);
@@ -66,7 +82,10 @@ export default function Login() {
         //(thread 2) Abilita collegamento a /newAss
         if (isAuthenticated) {
             if (username === 'admin') {
-                navigate("/newAss");
+                const route = await readingStatusIndagine();
+                if (route) {
+                    navigate(route);
+                }
             } else if (username === 'analyzer') {
                 navigate("/databaseAss");
             } else {

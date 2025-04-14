@@ -35,7 +35,9 @@ def get_users(request):
         return JsonResponse({"users": users}, safe=False, status=200)
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-    
+
+########################################################################################################################################################
+
 @api_view(['POST'])
 def set_assessment(request):
     if request.method == "POST" and request.user.is_authenticated:
@@ -46,7 +48,7 @@ def set_assessment(request):
             "adminName": data.get("adminName"),
             "adminEmail": data.get("adminEmail"),
             "user_id": request.user.id,  # Associamo l'assessment all'utente loggato
-            "statusIndagine":1,
+            "statusIndagine":0,
             "typeAss": "org",
         }
 
@@ -55,6 +57,8 @@ def set_assessment(request):
         return JsonResponse({"status": "ok", "message": "Dati salvati!"})
 
     return JsonResponse({"error": "non autorizzato"}, status=403)
+
+########################################################################################################################################################
 
 @api_view(['GET'])
 def get_typeAss(request):
@@ -73,7 +77,7 @@ def get_typeAss(request):
         
     return JsonResponse({"error": "Non autorizzato"}, status=403)  
 
-
+########################################################################################################################################################
 
 @api_view(['POST'])
 def set_statusIndagine(request):
@@ -99,6 +103,26 @@ def set_statusIndagine(request):
 
     return JsonResponse({"error": "Non autorizzato"}, status=403)
 
+@api_view(['GET'])
+def get_statusIndagine(request):
+    if request.method == "GET" and request.user.is_authenticated:
+        try:
+            doc = get_collection('assessments').find_one(
+                {"user_id": str(request.user.id)},
+                {"statusIndagine": 1, "_id": 0}  # Proietta solo il campo desiderato
+            )
+
+            if not doc or "statusIndagine" not in doc:
+                return JsonResponse({"error": "statusIndagine non trovato per questo utente"}, status=404)
+
+            return JsonResponse({"statusIndagine": doc["statusIndagine"]}, status=200)
+
+        except PyMongoError as e:
+            return JsonResponse({"error": f"Errore MongoDB: {str(e)}"}, status=500)
+
+    return JsonResponse({"error": "Non autorizzato"}, status=403)
+
+########################################################################################################################################################
 
 @api_view(['POST'])
 def set_preSurvey(request):
@@ -180,3 +204,4 @@ def get_preSurvey(request):
             return JsonResponse({"error": f"Errore MongoDB: {str(e)}"}, status=500)
 
     return JsonResponse({"error": "Non autorizzato"}, status=403)
+########################################################################################################################################################

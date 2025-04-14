@@ -41,7 +41,7 @@ export default function NewAss() {
     };
     const sendAssessment = async (data) => {
         try {
-            const response = await AxiosInstance.post('/api/set_assessment/', {
+            await AxiosInstance.post('/api/set_assessment/', {
                 assessmentName: data.assessmentName,
                 enteName: data.enteName,
                 adminName: data.adminName,
@@ -50,6 +50,15 @@ export default function NewAss() {
             //alert(response.data.message);
         } catch (error) {
             alert(error.response?.data?.error || "Errore durante il salvataggio");
+            return
+        }
+        try {
+            await AxiosInstance.post('/api/set_statusIndagine/', {
+                statusIndagine: 1,
+            });
+            //alert(response.data.message);
+        } catch (error) {
+            alert(error.response?.data?.error || "Errore durante la modifica dello status di indagine");
         }
     };
 
@@ -67,7 +76,7 @@ export default function NewAss() {
         }
     };
     // Gestione del submit
-    const handleSubmit = async() => {
+    const handleSubmit = async () => {
         if (validateForm()) {
             console.log("Form data:", formData);
             // Qui puoi inviare i dati al server o procedere con l'azione successiva
