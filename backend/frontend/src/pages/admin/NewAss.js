@@ -47,10 +47,10 @@ export default function NewAss() {
                 adminName: data.adminName,
                 adminEmail: data.adminEmail,
             });
-            //alert(response.data.message);
+            alert(response.data.message);
         } catch (error) {
             alert(error.response?.data?.error || "Errore durante il salvataggio");
-            return
+            return 
         }
         try {
             await AxiosInstance.post('/api/set_statusIndagine/', {

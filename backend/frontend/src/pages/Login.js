@@ -43,10 +43,12 @@ export default function Login() {
             const status = response.data.statusIndagine;
 
             if (status === 0) return "/newAss";
-            else if (status === 1) return "/newAss";
-            else if (status === 2) return "/newAss";
-            else if (status === 3) return "/newAss";
-            else if (status === 4) return "/newAss";
+            else if (status === 1)
+                // chiamata e lettura type per "/adminSurvey_org" o "/adminSurvey_net"
+                return "/newAss";
+            else if (status === 2) return "/questionari";
+            else if (status === 3) return "/reportLoading";
+            else if (status === 4) return "/reportFinal";
             else throw new Error("Status indagine sconosciuto");
         } catch (error) {
             alert(error.response?.data?.error || "Errore durante la lettura del statusIndagine");

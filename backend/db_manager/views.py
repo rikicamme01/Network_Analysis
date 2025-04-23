@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from pymongo.errors import PyMongoError
 
 # Aggiungere un nuovo utente
-'''@api_view(['POST'])
+@api_view(['POST'])
 def add_user(request):
     # Estrai email e password dalla richiesta
     email = request.data.get("email")
@@ -26,7 +26,7 @@ def add_user(request):
         return JsonResponse({"message": "New user is added"}, status=201)
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-'''
+
 # Ottieni tutti gli utenti
 @api_view(['GET'])
 def get_users(request):
