@@ -1,0 +1,103 @@
+.login {
+  background-color: #22509c;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  /* Larghezza del viewport */
+  height: 100vh;
+  overflow: hidden;
+
+}
+
+.login .semi-circle {
+  height: 150vh;
+  width: 100%;
+  background-color: #F6F6F6;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login .net-cohesion-index {
+  width: 740px;
+  height: 251px;
+  transform: scale(0.8);
+  -webkit-user-drag: none;
+
+  position: absolute;
+  top: 40px;
+}
+
+.login .username-text-field {
+  position: absolute;
+  top: 315px
+}
+
+.login .password-text-field {
+  position: absolute;
+  top: 405px
+}
+
+
+.login .button {
+  position: absolute;
+  top: 500px;
+}
+
+.login .div-cariplo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100px;
+  width: 200px;
+  position: absolute;
+  top: 500px;
+  left: 70px;
+}
+
+.login .con-il-supporto-di {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  top: 3px;
+}
+
+.login .logo-cariplo {
+  bottom: 10px;
+  transform: scale(0.6);
+  -webkit-user-drag: none;
+}
+
+.login .dialogica-logo-lab {
+  height: 153px;
+  width: 660px;
+  transform: scale(0.75);
+  -webkit-user-drag: none;
+  position: absolute;
+  top: 35px;
+}
+
+.div-lab {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  position: absolute;
+  top: 500px;
+  left: 81vw;
+}
+
+.logo-lab {
+  width: 250px;
+  height: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+}

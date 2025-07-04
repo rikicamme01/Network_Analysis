@@ -1,0 +1,117 @@
+.div-genitore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    /* Spaziatura tra i div */
+    /*background-color: brown;
+    /*padding: 20px;*/
+    width: 980px;
+    margin-bottom: 200px;
+}
+
+.div-testo {
+    background-color: #CCCCCC;
+    width: 100%;
+    height: auto;
+
+    justify-content: flex-start;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+    box-sizing: border-box;
+
+}
+
+.div-domande {
+   /*background-color: aqua;*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: left;
+    gap: 40px;
+}
+
+.div-opzioni {
+    margin-top: 15px;
+   /* background-color: blueviolet;*/
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.domanda {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+}
+
+.span-aggiungi-risposta {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px
+}
+
+.span-aggiungi-risposta:hover {
+    color: #22509C;
+    /*font-weight: bold;*/
+}
+
+.div-counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*margin-top: 15px;*/
+}
+
+.div-terza-riga {
+    /*background-color: lightsalmon;*/
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+
+}
+
+.div-salva {
+   /* background-color: lawngreen;*/
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Una sola colonna */
+    height: 100%;
+    width: auto;
+    justify-content: center;
+}
+
+.button-salva {
+  /*  background-color: violet;*/
+    align-items: center;
+    justify-content: center;
+
+}
+
+.progress {
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+
+}
+
+.fade-alert {
+    opacity: 1;
+    transition: opacity 0.5s ease-out; /* Dissolvenza in 0.5s */
+    margin-left: 70px;
+}
+
+.fade-alert.hidden {
+    opacity: 0;
+    margin-left: 70px;
+}

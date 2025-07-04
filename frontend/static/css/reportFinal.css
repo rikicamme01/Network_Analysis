@@ -1,0 +1,32 @@
+.div-genitore-report {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    /*padding: 20px;*/
+
+    width: 980px;
+    margin-bottom: 200px;
+}
+
+.div-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: left;
+    height: 60px;
+
+}
+
+.fade-alert {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    /* Dissolvenza in 0.5s */
+    margin-left: 70px;
+}
+
+.fade-alert.hidden {
+    opacity: 0;
+    margin-left: 70px;
+}

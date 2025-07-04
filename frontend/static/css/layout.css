@@ -1,0 +1,97 @@
+.layout {
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    /* Tre colonne */
+    grid-template-rows: auto;
+    /* Altezza unica per tutte le righe */
+    width: 100vw;
+    /* Larghezza dell'intero viewport */
+    height: 100vh;
+    /* Altezza dell'intero viewport */
+    background-color: #F6F6F6;
+}
+
+.spalla-sx {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    /* Larghezza minima per la spalla sinistra */
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+    /* Occupa tutta l'altezza della finestra */
+    background-color: #22509c;
+    box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.img-Dialogica-logo {
+    height: auto;
+    width: 10vw;
+    -webkit-user-drag: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 1000px;
+    overflow-y: auto;
+}
+
+.div-title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 120px;
+}
+
+.title {
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.children {
+    display: flex;
+    justify-content: center;
+}
+
+.child1 {
+    position: relative;
+    top: 55px;
+}
+
+.child2 {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+.spalla-dx {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    height: 100%;
+    /* background-color: #dc143c;*/
+}
+
+.logout {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-NCI {
+    padding-bottom: 0.5vh;
+    padding-right: 0.5vw;
+    margin-top: auto;
+}
+
+.img-NCI {
+    width: 175px;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+}

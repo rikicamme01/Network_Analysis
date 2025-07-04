@@ -1,0 +1,19 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #F6F6F6;
+  overflow: hidden;
+}
+
+:root {
+  --main-font: 'Titillium Web';
+  /* Variabile per il font principale */
+  --secondary-font: 'Roboto, sans-serif';
+  --primary-color: #22509C;
+  --secondary-color: #A9C4EB;
+}
+
+/*var font:Titillium Web;*/

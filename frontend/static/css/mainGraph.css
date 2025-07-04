@@ -1,0 +1,209 @@
+.div-genitore-graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /*padding: 20px;*/
+
+    width: 980px;
+    margin-bottom: 200px;
+    /*background-color: yellow;*/
+}
+
+.div-first-row-graph {
+    /* Gestisce il layout del contenitore */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Centra verticalmente gli elementi */
+    justify-content: space-between;
+    /* Posiziona il titolo a sinistra e il bottone a destra */
+    width: 100%;
+}
+
+.div-title-graph {
+    display: flex;
+    align-items:flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.div-filtro-parents{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.title-graph {
+    font-size: 25px;
+    font-family: 'Titillium Web', sans-serif;
+    align-self: flex-start;
+    margin: 0; 
+}
+
+.div-filtro {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:flex-start;
+    background-color: #CCCCCC;
+    width: 800px;
+    height: 175px;
+    border-radius: 10px;
+}
+
+.row-filtro {
+    /*background-color: aqua;*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row-filtro-filtra {
+    /*margin-bottom: 4px;*/
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.div-tipo-filtro {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    /*background-color: gold;*/
+    padding-left: 12px;
+    padding-right: 8px;
+}
+
+.div-selector {
+    display: flex;
+    width: 100%;
+
+}
+
+
+.div-subtitle-graph {
+    /*xes: Per Gruppo, per Repertorio Discorsivo, AdS per RD */
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    font-size: 19px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    color: #22509C;
+    text-decoration: underline;
+
+
+    /*background-color: indianred;*/
+
+}
+
+.div-tab-graph {
+    /*background-color: brown;*/
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px
+}
+
+.div-tab-graph-up-down {
+    /*background-color: brown;*/
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.tab {
+    flex: 4;
+    /*background-color: aqua;*/
+    overflow: hidden;
+}
+
+.index {
+    flex: 4;
+    font-size: 19px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    color: #22509C;
+    text-decoration: underline;
+}
+
+.graph {
+    flex: auto;
+    background-color: #A9C4EB;
+    overflow: hidden;
+    display: flex;
+    /* Usa Flexbox per centrare il contenuto */
+    justify-content: center;
+    /* Centra orizzontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    position: relative;
+    /* Necessario per gestire il posizionamento dell'immagine */
+    border-radius: 8px;
+}
+
+.graph-img {
+    width: 450px;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.tab-up-down {
+    /*background-color: aqua;*/
+    overflow: hidden;
+}
+
+.graph-up-down {
+    background-color: #A9C4EB;
+    overflow: hidden;
+    display: flex;
+    /* Usa Flexbox per centrare il contenuto */
+    justify-content: center;
+    /* Centra orizzontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    position: relative;
+    /* Necessario per gestire il posizionamento dell'immagine */
+    border-radius: 8px;
+    width: 100%;
+}
+
+.graph-img-up-down {
+    width: 750px;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.scale {
+    transform: scale(0.8);
+}
+
+.scale-up {
+    transform: scale(1.3);
+}
+
+.green {
+    width: 500px;
+    background-color: #9AC5B1;
+}
+
+.rose {
+    width: 500px;
+    background-color: #CEB5CA;
+}

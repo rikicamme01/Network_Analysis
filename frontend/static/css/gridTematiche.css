@@ -1,0 +1,13 @@
+/* Stile per il contenitore della griglia */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+
+/* Stile pulsante selezionato */
+.grid-button.selected {
+    background-color: #A9C4EB;
+    color: black;
+}
