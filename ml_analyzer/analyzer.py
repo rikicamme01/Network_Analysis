@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import sys
 import os
@@ -120,24 +121,19 @@ class Analyzer():
     def predict(self, df):
         if not isinstance(df, pd.DataFrame):
             raise Exception('L\'oggetto fornito non è un DataFrame valido.')
-        
-        # Log per verificare il DataFrame iniziale
-        print("DataFrame iniziale:", df.head())
-        
+
         # Controlla che il DataFrame contenga la colonna 'Testo'
         if 'Testo' in df.columns:
             print("Colonna 'Testo' trovata.")
             df['Testo'] = df['Testo'].map(clean_text)
-            # Log per vedere il testo pulito
-            print("Testo dopo la pulizia:", df['Testo'].head())
         else:
             raise Exception('The uploaded DataFrame is missing the "Testo" column')
         
+        print("Testo fatto, proviamo con Stralcio")
         # Predizione per la colonna 'Stralcio'
         try:
             df['Stralcio'] = df['Testo'].map(self.bert_seg.predict).values.tolist()
-            # Log per verificare la colonna 'Stralcio'
-            print("Stralcio dopo la predizione:", df['Stralcio'].head())
+            print("Colonna 'Stralcio' popolata")
         except Exception as e:
             print(f"Errore durante la predizione per 'Stralcio': {str(e)}")
             raise
@@ -149,7 +145,7 @@ class Analyzer():
             try:
                 list_dict = self.bert_rep.predict_vector(str_list)
                 # Log per vedere il dizionario restituito da predict_vector
-                print(f"Predizioni per {i}: {list_dict}")
+                #print(f"Predizioni per {i}: {list_dict}")
             except Exception as e:
                 print(f"Errore durante la predizione per 'Repertorio' e 'Alternative' alla riga {i}: {str(e)}")
                 continue
@@ -174,10 +170,6 @@ class Analyzer():
 
             list_column_alt.append(list_dict_sorted)
             list_column_rep.append(list_first_rep)
-        
-        # Log per vedere le colonne 'Repertorio' e 'Alternative' prima di aggiungerle
-        print("Repertorio prima di aggiungere:", list_column_rep[:5])
-        print("Alternative prima di aggiungere:", list_column_alt[:5])
 
         df['Repertorio'] = list_column_rep
         df['Alternative'] = list_column_alt
@@ -185,18 +177,41 @@ class Analyzer():
         # Se non esiste la colonna 'Ads', aggiungila come colonna vuota
         if 'Ads' not in df.columns:
             df['Ads'] = ''
-            print("Colonna 'Ads' aggiunta.")
-        
-        # Log per vedere il DataFrame finale
-        print("DataFrame finale:", df.head())
-
+        print(f"Colonna 'Ads' aggiunta. Dimensione df: {df.shape}")
         # Restituisci il DataFrame modificato
         return df
 
 
 ####################################################################################################################
+#TO USE:
+# 1) [.]utils, [.]model, [.]model     analyzer.py
+# 2) [..]utils, [..]utils   bert_rep.py
+
+'''#%%
+import pandas as pd
+# Crea un dizionario con i dati
+df_data =[
+
+    {'1.A Età': '26-29', "1.B Genere": 'F', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Operativo', "Domanda": '6.A Descrivi almeno 3 punti deboli riscontrati nel… cui operi rispetto alla gestione di "Gender Gap"', "Testo": "nel nostro caso c'è stato un confronto prima di scegliere a cosa aderire delle proposte fatte ma non era scontato, credo che dovrebbe essere invece prassi quando le azioni ricadono sul servizi che non sono direttamente svolti dal comune;"},
+    {'1.A Età': '26-29', "1.B Genere": 'F', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Operativo', "Domanda": '6.B Descrivi almeno 3 punti di forza riscontrati n… cui operi rispetto alla gestione di "Gender Gap"', "Testo": "nel nostro caso c'è stato un confronto prima di scegliere a cosa aderire delle proposte fatte ma non era scontato, credo che dovrebbe essere invece prassi quando le azioni ricadono sul servizi che non sono direttamente svolti dal comune;"},
+    {'1.A Età': '26-29', "1.B Genere": 'F', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Operativo', "Domanda": '6.C Considerando le tue precedenti risposte, quale…are "Gender Gap" all’interno dell’organizzazione?', "Testo": "nel nostro caso c'è stato un confronto prima di scegliere a cosa aderire delle proposte fatte ma non era scontato, credo che dovrebbe essere invece prassi quando le azioni ricadono sul servizi che non sono direttamente svolti dal comune;"},
+    {'1.A Età': '26-29', "1.B Genere": 'F', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Operativo', "Domanda": '6.D Quali sono gli ostacoli anticipati rispetto al…stione di "Gender Gap", nel ruolo che tu ricopri?', "Testo": "nel nostro caso c'è stato un confronto prima di scegliere a cosa aderire delle proposte fatte ma non era scontato, credo che dovrebbe essere invece prassi quando le azioni ricadono sul servizi che non sono direttamente svolti dal comune;"},
+    {'1.A Età': '26-29', "1.B Genere": 'F', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Operativo', "Domanda": '6.E Quali strategie potresti adottare, nel ruolo che ricopri, per affrontare tali ostacoli?', "Testo": "nel nostro caso c'è stato un confronto prima di scegliere a cosa aderire delle proposte fatte ma non era scontato, credo che dovrebbe essere invece prassi quando le azioni ricadono sul servizi che non sono direttamente svolti dal comune;"},
+    {'1.A Età': '26-29', "1.B Genere": 'M', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Direttivo (CEO, CFO, Membro del CDA, Presidente, Dirigente ecc...)', "Domanda": '6.A Descrivi almeno 3 punti deboli riscontrati nel… cui operi rispetto alla gestione di "Gender Gap"', "Testo": "Ulteriore aspetto critico è far pervenire alla pla…a potenzialmente interessata l'invito all'evento,"},
+    {'1.A Età': '26-29', "1.B Genere": 'M', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Direttivo (CEO, CFO, Membro del CDA, Presidente, Dirigente ecc...)', "Domanda": '6.B Descrivi almeno 3 punti di forza riscontrati n… cui operi rispetto alla gestione di "Gender Gap"', "Testo": "Ulteriore aspetto critico è far pervenire alla pla…a potenzialmente interessata l'invito all'evento,"},
+    {'1.A Età': '26-29', "1.B Genere": 'M', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Direttivo (CEO, CFO, Membro del CDA, Presidente, Dirigente ecc...)', "Domanda": '6.C Considerando le tue precedenti risposte, quale…are "Gender Gap" all’interno dell’organizzazione?', "Testo": "Ulteriore aspetto critico è far pervenire alla pla…a potenzialmente interessata l'invito all'evento,"},
+    {'1.A Età': '26-29', "1.B Genere": 'M', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Direttivo (CEO, CFO, Membro del CDA, Presidente, Dirigente ecc...)', "Domanda": '6.D Quali sono gli ostacoli anticipati rispetto al…stione di "Gender Gap", nel ruolo che tu ricopri?', "Testo": "Ulteriore aspetto critico è far pervenire alla pla…a potenzialmente interessata l'invito all'evento,"},
+    {'1.A Età': '26-29', "1.B Genere": 'M', "2.A Ruolo ricoperto all'interno dell'organizzazione": 'Direttivo (CEO, CFO, Membro del CDA, Presidente, Dirigente ecc...)', "Domanda": '6.E Quali strategie potresti adottare, nel ruolo che ricopri, per affrontare tali ostacoli?', "Testo": "Ulteriore aspetto critico è far pervenire alla pla…a potenzialmente interessata l'invito all'evento,"},
+]
+
+df = pd.DataFrame(df_data)
+analyzer = Analyzer()
+df_predicted = analyzer.predict(df)
+
 '''
-    import pandas as pd
+
+'''
+import pandas as pd
 import sys
 import os
 sys.path.append(os.path.dirname(sys.path[0]))
@@ -375,3 +390,4 @@ class Analyzer():
         pass
 
 '''
+# %%

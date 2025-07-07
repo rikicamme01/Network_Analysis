@@ -49,8 +49,11 @@ export default function MainAnalisiQuestionari({ selectedAssessment }) {
                         console.log("Dati delle risposte riformattate:", formattedResponsesData);
                         console.log("ResponsesData ottenuti:", responsesData);
 
-                        // Dopo aver ottenuto i dati, chiama ml_analyzer passando i dati ottenuti
-                        return ml_analyzer(formattedResponsesData);
+                        // Dopo aver ottenuto i dati, chiama ml_analyzer passando solo la colonna "Testo" di formattedResponsesData
+                        formattedResponsesAnalyzed = ml_analyzer(formattedResponsesData);
+
+                        // crea l'excel con unitedResponses (spacchettamento Stralci e Repertori) e responsesData
+
                     } else {
                         console.error('I dati delle risposte riformattate non sono stati trovati');
                         throw new Error('Dati delle risposte riformattate non trovati');
@@ -126,44 +129,53 @@ export default function MainAnalisiQuestionari({ selectedAssessment }) {
     };
 
     const ml_analyzer = async (formattedResponsesData) => {
+        // invia la richiesta api con solo la colonna "Testo" di formattedResponsesData
         console.log("Dati da inviare a ml_analyzer:", formattedResponsesData);
-        try {
-            const response = await AxiosInstance.post('/api/ml_analyzer/ml_predict/', {
-                df: formattedResponsesData
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
 
-            if (response && response.data) {
-                console.log('Risultato elaborato da ml_analyzer:', response.data.modified_responses_data);
-                return response.data.modified_responses_data;
-            } else {
-                console.error('Risposta vuota da ml_analyzer');
-                throw new Error('Risposta vuota dal server di analisi');
+        try {
+            const response = await AxiosInstance.post('/api/ml_analyzer/ml_predict/',
+                { df: formattedResponsesData },
+                { headers: { 'Content-Type': 'application/json' } }
+            );
+
+            // ✅ Controllo esplicito sullo status HTTP
+            if (response.status !== 200) {
+                console.error('Risposta non 200 da ml_analyzer:', response.status);
+                throw new Error(`Errore HTTP ${response.status}`);
             }
+
+            if (!response.data || !response.data.modified_responses_data) {
+                console.error('Risposta non valida da ml_analyzer:', response.data);
+                throw new Error('Risposta vuota o dati mancanti dal server di analisi');
+            }
+
+            console.log('Risultato elaborato da ml_analyzer:', response.data.modified_responses_data);
+            // unisci response.data.modified_responses_data con le altre colonne di formattedResponsesData
+            return response.data.modified_responses_data;   // return formattedResponsesAnalyzed
 
         } catch (error) {
             console.error('Errore durante la chiamata a ml_analyzer:', error);
 
-            // Gestione più sicura degli errori
-            if (error.response) {
-                // Controlla se la risposta esiste e ha un status
-                console.error('Dettagli errore ml_analyzer:', error.response.data);
-                const errorMessage = error.response.data?.error || error.response.data?.message || 'Errore sconosciuto dal server';
-                throw new Error(`Errore nell'analisi ML: ${error.response.status} - ${errorMessage}`);
-            } else if (error.request) {
-                // Errore di rete (server non raggiungibile)
-                console.error('Errore nella richiesta ml_analyzer:', error.request);
-                throw new Error('Errore di connessione: il server non è raggiungibile. Verifica che il server Django sia in esecuzione.');
+            const status = error?.response?.status || 'N/A';
+            const errorMessage =
+                error?.response?.data?.error ||
+                error?.response?.data?.message ||
+                error?.message ||
+                'Errore sconosciuto';
+
+            if (error?.response) {
+                console.error('Dettagli errore ml_analyzer:', error?.response?.data);
+                throw new Error(`Errore ML Analyzer (${status}): ${errorMessage}`);
+            } else if (error?.request) {
+                console.error('Errore nella richiesta ml_analyzer:', error?.request);
+                throw new Error('Errore di rete: il server non è raggiungibile. Verifica che sia attivo.');
             } else {
-                // Altri errori
-                console.error('Errore sconosciuto ml_analyzer:', error.message);
-                throw new Error(`Errore nell'analisi ML: ${error.message || 'Errore sconosciuto'}`);
+                console.error('Errore Axios generico:', error?.message || error);
+                throw new Error(`Errore Axios: ${errorMessage}`);
             }
         }
     };
+
 
     const createExcelFile = (responsesData, formattedResponsesAnalyzed) => {
         console.log("Creazione file Excel con:");

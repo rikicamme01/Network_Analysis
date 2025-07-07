@@ -23,8 +23,6 @@ def ml_predict(request):
 
         # Log per vedere il tipo di df_data
         print("Tipo di df_data:", type(df_data))
-        #print("Contenuto df_data:", df_data)
-
         try:
             # Se df_data è già un dict/list, non fare json.loads
             if isinstance(df_data, (dict, list)):
@@ -43,13 +41,13 @@ def ml_predict(request):
         if df.empty:
             return Response({'error': 'Il DataFrame fornito è vuoto'}, status=400)
         
-        print("DataFrame creato:", df.head())  # Log per vedere come viene creato il DataFrame
-        print("Colonne del DataFrame:", df.columns.tolist())  # Log per vedere le colonne
-        
-        analyzer = Analyzer()
+        try:
+            analyzer = Analyzer()
 
-        modified_df = analyzer.predict(df)
-        
+            modified_df = analyzer.predict(df)
+        except Exception as e:
+            print("Errore durante la predizione:", e)
+            
         if modified_df is None or modified_df.empty:
             return Response({'error': 'Nessun dato modificato disponibile'}, status=500)
 

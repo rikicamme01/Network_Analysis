@@ -19,6 +19,7 @@ class BertSegmenter():
         self.model.eval()
     
     def predict(self, text:str) -> List[str]:
+        #print("1 stampa debug")
         encoded_text = self.tokenizer(text,
                                     return_special_tokens_mask=True,
                                     return_offsets_mapping=True,
@@ -28,17 +29,17 @@ class BertSegmenter():
                                     truncation=True,
                                     return_tensors = 'pt'
                                     )
-        
+        #print("2 stampa debug")
         input_ids = encoded_text['input_ids'].to(self.device)
         attention_mask = encoded_text['attention_mask'].to(self.device)
         logits = self.model(input_ids, attention_mask)['logits']
-        
+        #print("3 stampa debug")
         full_probs = logits.softmax(dim=-1)
         full_probs = full_probs.view(full_probs.size(1), full_probs.size(2))
-
+        #print("4 stampa debug")
         full_labels = decode_segmentation(full_probs, 0.5)
         active_labels = extract_active_preds(full_labels, encoded_text['special_tokens_mask'][0].tolist())
-
+        #print("5 stampa debug")
         x = split_by_prediction(active_labels, encoded_text['input_ids'][0].tolist(), encoded_text['offset_mapping'][0].tolist(), text, self.tokenizer)
         return x
 
