@@ -168,40 +168,39 @@ export default function Login() {
         }
 
         try {
-            const res = await AxiosInstance.post('/api/token/', {
+            const res = await AxiosInstance.post('/api/wp_login/', {
                 username: username,
                 password: password
             });
 
-            const { access, refresh } = res.data;
+            if (res.data.status === "ok") {
+                const { token, user } = res.data;
 
-            // Salva i token
-            localStorage.setItem("access_token", access);
-            localStorage.setItem("refresh_token", refresh);
-            localStorage.setItem("username", username); // Salviamo anche lo username
+                // Salva token WP
+                localStorage.setItem("wp_token", token);
+                localStorage.setItem("username", user.email);
 
-            // Configura i token per le richieste future
-            AxiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access}`;
+                // Usa questo token nelle chiamate future
+                AxiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-            // Inizializza la sessione utente
-            const statusIndagine = await initializeUserSession(username);
+                // Inizializza sessione utente
+                const statusIndagine = await initializeUserSession(username);
 
-            // Prosegui con la logica di navigazione
-            if (username === 'admin' || username === 'riccardo') {
-                console.log(`Utente ${username} autenticato, determinando reindirizzamento...`);
-                const route = await readingStatusIndagine();
-                console.log(`Reindirizzamento a: ${route}`);
-                navigate(route);
-            } else if (username === 'analyzer') {
-                console.log(`Utente analyzer autenticato, reindirizzamento a databaseAss`);
-                navigate("/databaseAss");
+                // Navigazione come prima
+                if (username === 'admin') {
+                    const route = await readingStatusIndagine();
+                    navigate(route);
+                } else if (username === 'analyzer') {
+                    navigate("/databaseAss");
+                } else {
+                    navigate("/newAss");
+                }
             } else {
-                console.log(`Utente ${username} non ha un reindirizzamento specifico configurato, reindirizzando a /newAss`);
-                navigate("/newAss");
+                alert("Login fallito: credenziali non valide");
             }
 
         } catch (error) {
-            console.error("Errore login JWT:", error);
+            console.error("Errore login WP:", error);
             alert("Login fallito. Verifica le credenziali.");
         } finally {
             setIsLoading(false);

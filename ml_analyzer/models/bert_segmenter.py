@@ -19,6 +19,7 @@ class BertSegmenter():
         self.model.eval()
     
     def predict(self, text:str) -> List[str]:
+        #print(f"Device: {self.device}")
         #print("1 stampa debug")
         encoded_text = self.tokenizer(text,
                                     return_special_tokens_mask=True,
@@ -27,12 +28,19 @@ class BertSegmenter():
                                     return_attention_mask=True,
                                     padding='max_length',
                                     truncation=True,
+                                    max_length=512,
                                     return_tensors = 'pt'
                                     )
         #print("2 stampa debug")
         input_ids = encoded_text['input_ids'].to(self.device)
         attention_mask = encoded_text['attention_mask'].to(self.device)
-        logits = self.model(input_ids, attention_mask)['logits']
+        try:
+            logits = self.model(input_ids, attention_mask)['logits']
+        except Exception as e:
+            print("❌ Errore nel forward del modello:", str(e))
+            import traceback
+            traceback.print_exc()
+            raise e
         #print("3 stampa debug")
         full_probs = logits.softmax(dim=-1)
         full_probs = full_probs.view(full_probs.size(1), full_probs.size(2))

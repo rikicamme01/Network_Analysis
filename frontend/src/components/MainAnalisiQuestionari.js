@@ -38,7 +38,6 @@ export default function MainAnalisiQuestionari({ selectedAssessment }) {
         console.log("Assessment selezionato:", selectedAssessment);
         setLoading(true);
 
-        // Chiamata a export_responses per ottenere i dati
         export_responses()
             .then((response) => {
                 if (response && response.data) {
@@ -49,48 +48,36 @@ export default function MainAnalisiQuestionari({ selectedAssessment }) {
                         console.log("Dati delle risposte riformattate:", formattedResponsesData);
                         console.log("ResponsesData ottenuti:", responsesData);
 
-                        // Dopo aver ottenuto i dati, chiama ml_analyzer passando solo la colonna "Testo" di formattedResponsesData
-                        formattedResponsesAnalyzed = ml_analyzer(formattedResponsesData);
+                        const onlyTesto = formattedResponsesData.map((row) => ({ Testo: row.Testo }));
 
-                        // crea l'excel con unitedResponses (spacchettamento Stralci e Repertori) e responsesData
-
+                        // ✅ RESTITUISCE LA PROMISE QUI
+                        return ml_analyzer(onlyTesto, formattedResponsesData);
                     } else {
-                        console.error('I dati delle risposte riformattate non sono stati trovati');
                         throw new Error('Dati delle risposte riformattate non trovati');
                     }
                 } else {
-                    console.error('Errore nella risposta di export_responses');
                     throw new Error('Errore nella risposta di export_responses');
                 }
             })
             .then((result) => {
-                // Assegna formattedResponsesAnalyzed DENTRO il flusso delle promesse
+                // ORA result contiene i dati restituiti da ml_analyzer
                 formattedResponsesAnalyzed = result;
 
-                // Ora entrambe le variabili sono disponibili e sincronizzate
                 console.log("Analisi completata!");
                 console.log("responsesData:", responsesData);
                 console.log("formattedResponsesAnalyzed:", formattedResponsesAnalyzed);
 
-                // Qui puoi chiamare la funzione per creare l'Excel o fare altre operazioni
-                //createExcelFile(responsesData, formattedResponsesAnalyzed);
-
                 setLoading(false);
                 setAnalyzed(true);
-
-                // Se devi settare il content, fallo qui
-                // setContent(<TabRisultati rows={formattedResponsesAnalyzed} />);
             })
             .catch((error) => {
-                // Gestisci eventuali errori
                 setLoading(false);
                 console.error('Errore durante l\'analisi:', error);
-
-                // Reset delle variabili in caso di errore
                 formattedResponsesAnalyzed = null;
                 responsesData = null;
             });
     };
+
 
     const export_responses = async () => {
         if (!selectedAssessment || !selectedAssessment['_id']) {
@@ -128,30 +115,37 @@ export default function MainAnalisiQuestionari({ selectedAssessment }) {
         }
     };
 
-    const ml_analyzer = async (formattedResponsesData) => {
+    const ml_analyzer = async (testoOnlyData, formattedResponsesData) => {
         // invia la richiesta api con solo la colonna "Testo" di formattedResponsesData
-        console.log("Dati da inviare a ml_analyzer:", formattedResponsesData);
+        console.log("Dati da inviare a ml_analyzer (only Testo):", testoOnlyData);
 
         try {
             const response = await AxiosInstance.post('/api/ml_analyzer/ml_predict/',
-                { df: formattedResponsesData },
+                { df: testoOnlyData },
                 { headers: { 'Content-Type': 'application/json' } }
             );
 
-            // ✅ Controllo esplicito sullo status HTTP
-            if (response.status !== 200) {
+            if (response?.status !== 200) {
                 console.error('Risposta non 200 da ml_analyzer:', response.status);
                 throw new Error(`Errore HTTP ${response.status}`);
             }
-
             if (!response.data || !response.data.modified_responses_data) {
                 console.error('Risposta non valida da ml_analyzer:', response.data);
                 throw new Error('Risposta vuota o dati mancanti dal server di analisi');
             }
+            const modifiedData = response.data?.modified_responses_data;
+            if (!modifiedData) {
+                throw new Error('Risposta vuota o dati mancanti dal server di analisi');
+            }
 
             console.log('Risultato elaborato da ml_analyzer:', response.data.modified_responses_data);
-            // unisci response.data.modified_responses_data con le altre colonne di formattedResponsesData
-            return response.data.modified_responses_data;   // return formattedResponsesAnalyzed
+
+            const combinedData = formattedResponsesData.map((row, index) => ({
+                ...row,
+                ...modifiedData[index],
+            }));
+
+            return combinedData;
 
         } catch (error) {
             console.error('Errore durante la chiamata a ml_analyzer:', error);
